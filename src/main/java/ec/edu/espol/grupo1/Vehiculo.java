@@ -36,6 +36,44 @@ public class Vehiculo {
         return placa;
     }
 
+    public String getModelo() {
+        return modelo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getTipoMotor() {
+        return tipoMotor;
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public double getRecorrido() {
+        return recorrido;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getTipoCosmbustible() {
+        return tipoCosmbustible;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    
+
     
     
     

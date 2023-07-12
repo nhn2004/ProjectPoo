@@ -17,6 +17,15 @@ public class Auto extends Vehiculo {
         this.vidrios = vidrios;
         this.transmision = transmision;
     }
+
+    public String getVidrios() {
+        return vidrios;
+    }
+
+    public String getTransmision() {
+        return transmision;
+    }
+    
     
     
 }

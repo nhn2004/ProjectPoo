@@ -19,6 +19,20 @@ public class Camioneta extends Vehiculo {
         this.vidrios = vidrios;
         this.transmision = transmision;
     }
+
+    public String getTraccion() {
+        return traccion;
+    }
+    
+
+    public String getVidrios() {
+        return vidrios;
+    }
+
+    public String getTransmision() {
+        return transmision;
+    }
+    
     
     
     
