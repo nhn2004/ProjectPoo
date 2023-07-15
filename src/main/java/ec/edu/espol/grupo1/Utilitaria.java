@@ -5,6 +5,7 @@
 package ec.edu.espol.grupo1;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -65,5 +66,68 @@ class Utilitaria {
     public static Vehiculo filtrarPorPlaca(ArrayList<Vehiculo> vehiculos, String placa){
         Vehiculo v = new Vehiculo();
         return v;
+    }
+    
+    public static Vehiculo navegar(ArrayList<Vehiculo> vehiculos){
+        int tamaño= vehiculos.size();
+        Scanner sc= new Scanner(System.in);
+        int seleccion = 0;
+        int i=0;
+        Vehiculo v;
+        do{
+            v = vehiculos.get(i);  
+            System.out.println(v.toString());
+            if (tamaño>0 && i==0){
+              System.out.println("1.- Siguiente");
+              System.out.println("2.- Seleccionar");
+            }
+            else if(tamaño>i){
+              System.out.println("1.- Siguiente");
+              System.out.println("2.- Seleccionar");
+              System.out.println("3.- Anterior");
+            }
+            else{
+              System.out.println("2.- Seleccionar");
+              System.out.println("3.- Anterior");
+            }
+            seleccion= sc.nextInt();
+            sc.nextInt();
+            if (seleccion == 2){
+                return v;
+              /* Cuando el vendedor acepta la oferta, el vehículo que está a la venta debe eliminarse del sistema y enviarle un correo al comprador del cual se aceptó la oferta confirmándole que se ha aceptado su oferta.*/
+            }
+            else if (seleccion == 1){
+              i++;
+            }
+            else if(seleccion==3){
+              i--;
+            }
+            switch (seleccion) {
+                case 1:
+                    i++;
+                    if (i >= tamaño) {
+                        System.out.println("Has revisado todos los vehículos.");
+                        i--;
+                    }
+                    break;
+
+                case 2:
+                    return v;
+
+                case 3:
+                    i--;
+                    if (i < 0) {
+                        System.out.println("Ya estás en el primer vehículo.");
+                        i++;
+                    }
+                    break;
+
+                default:
+                    System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
+                    break;
+            }      
+
+        }while (seleccion != 2);
+        return null;
     }
 }

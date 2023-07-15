@@ -85,12 +85,13 @@ El vendedor podrá revisar las ofertas para los vehículos ingresando la placa d
 
     Vehiculo v= Utilitaria.filtrarPorPlaca(vehiculos,placa);
     System.out.println(""+v.getMarca()+" "+v.getModelo()+" Precio: "+v.getPrecio());
+    int tamaño= v.getOfertas().size();
     int seleccion = 0;
     Oferta oferta;
     int i=0;
     do{
       System.out.println("Oferta "+(i+1)+":");
-      int tamaño= v.getOfertas().size();
+      
       oferta= v.getOfertas().get(i);  
       System.out.println("Correo: "+oferta.getComprador().getCorreo());
       System.out.println("Precio "+oferta.getPrecio());
@@ -108,6 +109,7 @@ El vendedor podrá revisar las ofertas para los vehículos ingresando la placa d
         System.out.println("3.- Anterior Oferta");
       }
       seleccion= sc.nextInt();
+      sc.nextInt();
       if (seleccion == 2){
         /* Cuando el vendedor acepta la oferta, el vehículo que está a la venta debe eliminarse del sistema y enviarle un correo al comprador del cual se aceptó la oferta confirmándole que se ha aceptado su oferta.*/
       }
@@ -117,8 +119,10 @@ El vendedor podrá revisar las ofertas para los vehículos ingresando la placa d
       else if(seleccion==3){
         i-=1;
       }
-
-
+      
+      
+      
+      
 
     }while (seleccion != 2);
 
