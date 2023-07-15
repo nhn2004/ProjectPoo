@@ -84,7 +84,20 @@ public class Vehiculo {
         return ofertas;
     }
 
-    
+    @Override
+    public String toString(){
+        return "Este vehículo tiene:/n"
+                + "Placa = "+this.placa+",/n"
+                + "Marca = "+this.marca+",/n"
+                + "Modelo = "+this.modelo+",/n"
+                + "Tipo de motor = "+this.tipoMotor+",/n"
+                + "Año = "+this.año+",/n"
+                + "Recorrido = "+this.recorrido+",/n"
+                + "Color = "+this.color+",/n"
+                + "Tipo de combustible = "+this.tipoCosmbustible+",/n"
+                + "Precio = "+this.precio+",/n"
+                + "Vendedor = "+this.vendedor;
+    }
 
     
     

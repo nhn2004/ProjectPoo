@@ -4,6 +4,10 @@
  */
 package ec.edu.espol.grupo1;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+
 /**
  *
  * @author HP
@@ -34,4 +38,12 @@ public class Oferta {
         return comprador;
     }
  
+    public void saveFile(String nombreArchivo){
+        try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
+            pw.println(this.precio+"|"+this.vehiculo+"|"+this.comprador);  
+        } 
+        catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+    }
 }

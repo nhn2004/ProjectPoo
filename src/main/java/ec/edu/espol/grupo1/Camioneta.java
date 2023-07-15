@@ -33,7 +33,13 @@ public class Camioneta extends Vehiculo {
         return transmision;
     }
     
-    
+    @Override
+    public String toString(){
+        return (super.toString()+",/n"
+                + "Vidrios = "+this.vidrios+",/n"
+                + "Transmisión = "+this.transmision+",/n"
+                + "Tracción = "+this.traccion);
+ }
     
     
 }

@@ -96,14 +96,16 @@ public class Comprador {
       
   }
   
-  public void ofertaPorVehiculo(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, double recorridoFin, int añoInicio, int añoFin, double precioInicio, double precioFin){
-    double precioOfertado;
+  public void ofertaPorVehiculo(ArrayList<Vehiculo> vehiculos, String tipovehiculo, double recorridoInicio, double recorridoFin, int añoInicio, int añoFin, double precioInicio, 
+          double precioFin, String nomArchivo){
     ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos, tipovehiculo, recorridoInicio, recorridoFin, añoInicio, añoFin, precioInicio, precioFin);
     Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
     Scanner sc = new Scanner(System.in);
     System.out.println("Ingrese la oferta por el vehiculo elegido: ");
     double monto = sc.nextDouble();
     Oferta oferta = new Oferta(monto, vehiculoSeleccionado, this);
-    //Luego registrar esta oferta en el sistema 
+    oferta.saveFile(nomArchivo);//no estoy muy seguro de como obter el nombre del archivo donde se registrará la oferta, mientras tanto la pongo en los 
+    //parametros del constructor
+
     }
 }
