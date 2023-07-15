@@ -92,16 +92,7 @@ class Utilitaria {
             }
             seleccion= sc.nextInt();
             sc.nextInt();
-            if (seleccion == 2){
-                return v;
-              /* Cuando el vendedor acepta la oferta, el vehículo que está a la venta debe eliminarse del sistema y enviarle un correo al comprador del cual se aceptó la oferta confirmándole que se ha aceptado su oferta.*/
-            }
-            else if (seleccion == 1){
-              i++;
-            }
-            else if(seleccion==3){
-              i--;
-            }
+            
             switch (seleccion) {
                 case 1:
                     i++;

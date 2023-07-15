@@ -110,15 +110,30 @@ El vendedor podrá revisar las ofertas para los vehículos ingresando la placa d
       }
       seleccion= sc.nextInt();
       sc.nextInt();
-      if (seleccion == 2){
-        /* Cuando el vendedor acepta la oferta, el vehículo que está a la venta debe eliminarse del sistema y enviarle un correo al comprador del cual se aceptó la oferta confirmándole que se ha aceptado su oferta.*/
-      }
-      else if (seleccion == 1){
-        i+=1;
-      }
-      else if(seleccion==3){
-        i-=1;
-      }
+      switch (seleccion) {
+                case 1:
+                    i++;
+                    if (i >= tamaño) {
+                        System.out.println("Has revisado todos los vehículos.");
+                        i--;
+                    }
+                    break;
+
+                case 2:
+//                    elimina de la base ese vehiculo;
+
+                case 3:
+                    i--;
+                    if (i < 0) {
+                        System.out.println("Ya estás en el primer vehículo.");
+                        i++;
+                    }
+                    break;
+
+                default:
+                    System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
+                    break;
+            }
       
       
       
