@@ -24,20 +24,8 @@ public class Vendedor extends Usuario{
         this.vehiculos = vehiculos;
     }
 
-    public Vendedor(ArrayList<Vehiculo> vehiculos, int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
+    public Vendedor(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
-        this.vehiculos = vehiculos;
-    }
-
-    
-
-    public void saveFile(String nombreArchivo){
-        try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
-          pw.println(this.id+"|"+this.nombres+"|"+this.apellidos+"|"+
-                  this.organizacion+"|"+this.correoElectronico+"|"+this.clave);  
-        } catch(Exception e){
-          System.out.println(e.getMessage());
-        }
     }
 
 

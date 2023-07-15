@@ -83,10 +83,11 @@ public class Usuario implements Saveable {
     public String toString(){
         return this.id+"|"+this.nombre+"|"+this.apellidos+"|"+this.organizacion+"|"+this.correoElectronico+"|"+this.clave;
     }
- 
+    
+    @Override
     public void saveFile(String nombreArchivo){
         try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
-            pw.println(this.toString());  
+            pw.println(toString());  
         } 
         catch(Exception e){
           System.out.println(e.getMessage());

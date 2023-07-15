@@ -19,10 +19,9 @@ public class Comprador extends Usuario{
   private String correo;
   private Oferta oferta;
 
-    public Comprador(String correo, Oferta oferta, int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
+    public Comprador(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave,String correo) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
         this.correo = correo;
-        this.oferta = oferta;
     }
 
     public String getCorreo() {
@@ -44,7 +43,7 @@ public class Comprador extends Usuario{
   
   public void saveFile(String nombreArchivo){
     try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
-        pw.println(this.id+"|"+this.nombre+"|"+this.apellidos+"|"+this.organizacion+"|"+this.correoElectronico+"|"+this.correo+"|"+this.clave);  
+        pw.println(super.toString()+"|"+this.correo);  
         } 
     catch(Exception e){
         System.out.println(e.getMessage());
@@ -65,7 +64,7 @@ public class Comprador extends Usuario{
    System.out.println("Ingrese clave: ");
    String clav= sc.nextLine();
    int i= Utilitaria.nextId(nombreArchivo);
-   Comprador c= new Comprador(i,n,a,o,cE,co,clav);
+   Comprador c= new Comprador(i,n,a,o,cE,clav,co);
    c.saveFile(nombreArchivo);
  }
   

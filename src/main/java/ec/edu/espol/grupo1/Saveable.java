@@ -9,5 +9,5 @@ package ec.edu.espol.grupo1;
  * @author HP
  */
 public interface Saveable {
-    void saveFile();
+    void saveFile(String nombreArchivo);
 }
