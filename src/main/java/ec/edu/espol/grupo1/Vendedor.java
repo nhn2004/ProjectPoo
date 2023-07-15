@@ -26,6 +26,10 @@ public class Vendedor extends Usuario{
 
     public Vendedor(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
+<<<<<<< Updated upstream
+=======
+        this.vehiculos = vehiculos;
+>>>>>>> Stashed changes
     }
 
 

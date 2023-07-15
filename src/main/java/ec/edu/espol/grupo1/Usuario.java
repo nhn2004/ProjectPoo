@@ -118,6 +118,27 @@ public class Usuario implements Saveable {
         return users,compradores;
     }
     
+    public void registroNuevo(String nomArchivo){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese su rol: ");
+        String tipoUsuario = sc.nextLine();
+        System.out.println("Ingrese nombres: ");
+        String n= sc.nextLine();
+        System.out.println("Ingrese apellidos: ");
+        String a= sc.nextLine();
+        System.out.println("Ingrese organización: ");
+        String o= sc.nextLine();
+        System.out.println("Ingrese correo electrónico: ");
+        String cE= sc.nextLine();
+        System.out.println("Ingrese clave: ");
+        String clav= sc.nextLine();
+        int i= Utilitaria.nextId(nomArchivo);
+        if (tipoUsuario.toLowerCase().equals("vendedor")){
+               Vendedor v= new Vendedor(i,n,a,o,cE,clav);
+               v.saveFile(nombreArchivo);
+        }
+    }
+    
     public static String buscarClave(String nombreArchivo,String correoElectronico){
         ArrayList<Usuario> listaUsuarios= Usuario.readFile(nombreArchivo);
         String clave= "";
