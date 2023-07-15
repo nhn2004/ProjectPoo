@@ -9,16 +9,29 @@ package ec.edu.espol.grupo1;
  * @author HP
  */
 public class Oferta {
- private double precio;
- private Vehiculo vehiculo;
- private Comprador comprador;
+    private double precio;
+    private Vehiculo vehiculo;
+    private Comprador comprador;
 
- public Oferta(){
+    public Oferta(){
 
- }
- public Oferta(double p,Vehiculo v,Comprador c){
-   precio=p;
-   vehiculo=v;
-   comprador=c;
- }
+    }
+    public Oferta(double p,Vehiculo v,Comprador c){
+      precio=p;
+      vehiculo=v;
+      comprador=c;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public Comprador getComprador() {
+        return comprador;
+    }
+ 
 }

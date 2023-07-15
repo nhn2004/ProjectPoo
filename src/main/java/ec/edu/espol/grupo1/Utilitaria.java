@@ -61,4 +61,9 @@ class Utilitaria {
      }
     return listaRetorno;
     }
+    
+    public static Vehiculo filtrarPorPlaca(ArrayList<Vehiculo> vehiculos, String placa){
+        Vehiculo v = new Vehiculo();
+        return v;
+    }
 }

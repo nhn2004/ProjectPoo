@@ -4,6 +4,8 @@
  */
 package ec.edu.espol.grupo1;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Dom
@@ -19,6 +21,11 @@ public class Vehiculo {
     private String tipoCosmbustible;
     private double precio;
     private Vendedor vendedor;
+    ArrayList<Oferta> ofertas;
+    
+    public Vehiculo(){
+        
+    }
 
     public Vehiculo(String placa, String modelo, String marca, String tipoMotor, int año, double recorrido, String color, String tipoCosmbustible, double precio) {
         this.placa = placa;
@@ -30,6 +37,7 @@ public class Vehiculo {
         this.color = color;
         this.tipoCosmbustible = tipoCosmbustible;
         this.precio = precio;
+        this.ofertas = new ArrayList<>();
     }
 
     public String getPlaca() {
@@ -70,6 +78,10 @@ public class Vehiculo {
 
     public Vendedor getVendedor() {
         return vendedor;
+    }
+
+    public ArrayList<Oferta> getOfertas() {
+        return ofertas;
     }
 
     
