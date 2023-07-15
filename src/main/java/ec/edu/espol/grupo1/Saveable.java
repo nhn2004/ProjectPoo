@@ -8,6 +8,6 @@ package ec.edu.espol.grupo1;
  *
  * @author HP
  */
-public interface Assitantable {
-    
+public interface Saveable {
+    void saveFile();
 }

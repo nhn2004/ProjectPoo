@@ -4,6 +4,9 @@
  */
 package ec.edu.espol.grupo1;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,90 +14,60 @@ import java.util.Scanner;
  *
  * @author HP
  */
-public class Comprador {
-  private int id;
-  private String nombre;
-  private String apellidos;
-  private String organizacion;
-  private String correoElectronico;
+public class Comprador extends Usuario{
+
   private String correo;
-  private String clave;
   private Oferta oferta;
 
-  public Comprador(int id,String n, String a, String o, String cE, String c, String cl){
-    this.id=id;
-    this.nombre = n;
-    this.apellidos = a;
-    this.correoElectronico = cE;
-    this.organizacion = o;
-    this.correo = c;
-    this.clave = cl;
-    this.oferta = new Oferta();
-  }
+    public Comprador(String correo, Oferta oferta, int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
+        super(id, nombre, apellidos, organizacion, correoElectronico, clave);
+        this.correo = correo;
+        this.oferta = oferta;
+    }
 
-//getters
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Oferta getOferta() {
+        return oferta;
+    }
+
+    public void setOferta(Oferta oferta) {
+        this.oferta = oferta;
+    }
+
   
-  public String  getNombre(){
-    return this.nombre;
-  }
-
-  public String getApellidos(){
-    return this.apellidos;
-  }
-
-  public String correoElectronico(){
-    return this.correoElectronico;
-  }
-
-  public String getOrganizacion(){
-    return this.organizacion;
-  }
-
-  public String getCorreo(){
-    return this.correo;
-  }
-
-  public String getClave(){
-    return this.clave;
-  }
-
-  public Oferta getOferta(){
-    return this.oferta;
-  }
-
-// setters
+  public void saveFile(String nombreArchivo){
+    try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
+        pw.println(this.id+"|"+this.nombre+"|"+this.apellidos+"|"+this.organizacion+"|"+this.correoElectronico+"|"+this.correo+"|"+this.clave);  
+        } 
+    catch(Exception e){
+        System.out.println(e.getMessage());
+        }
+    }
   
-  public void setNombre(String n){
-    this.nombre = n;
-  }
-
-  public void setApellidos(String a){
-    this.apellidos = a;
-  }
-
-  public void setCorreoElectronico(String cE){
-    this.correoElectronico = cE;
-  }
-
-  public void setOrganizacion(String o){
-    this.organizacion = o;
-  }
-
-  public void setCorreo(String c){
-    this.correo = c;
-  }
-
-  public void setClave(String cl){
-    this.clave = cl;
-  }
-
-  public void setOferta(Oferta o){
-    this.oferta = o;
-  }
-  
-  public void registrarComprador(){
-      
-  }
+  public void registrarNuevoComprador(Scanner sc,String nombreArchivo){
+   System.out.println("Ingrese nombres: ");
+   String n= sc.nextLine();
+   System.out.println("Ingrese apellidos: ");
+   String a= sc.nextLine();
+   System.out.println("Ingrese organización: ");
+   String o= sc.nextLine();
+   System.out.println("Ingrese correo electrónico: ");
+   String cE= sc.nextLine();
+   System.out.println("Ingrese correo:");
+   String co = sc.nextLine();
+   System.out.println("Ingrese clave: ");
+   String clav= sc.nextLine();
+   int i= Utilitaria.nextId(nombreArchivo);
+   Comprador c= new Comprador(i,n,a,o,cE,co,clav);
+   c.saveFile(nombreArchivo);
+ }
   
   public void ofertaPorVehiculo(ArrayList<Vehiculo> vehiculos, String tipovehiculo, double recorridoInicio, double recorridoFin, int añoInicio, int añoFin, double precioInicio, 
           double precioFin, String nomArchivo){

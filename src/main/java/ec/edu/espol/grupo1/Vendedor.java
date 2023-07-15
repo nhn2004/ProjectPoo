@@ -12,56 +12,9 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Vendedor{
-    private int id;
-    private String nombres;
-    private String apellidos;
-    private String organizacion;
-    private String correoElectronico;
-    private String clave;
+public class Vendedor extends Usuario{
+
     private ArrayList<Vehiculo> vehiculos;
-
-    public Vendedor(){}
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getOrganizacion() {
-        return organizacion;
-    }
-
-    public void setOrganizacion(String organizacion) {
-        this.organizacion = organizacion;
-    }
-
-    public String getCorreoElectronico() {
-        return correoElectronico;
-    }
-
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
 
     public ArrayList<Vehiculo> getVehiculos() {
         return vehiculos;
@@ -71,16 +24,12 @@ public class Vendedor{
         this.vehiculos = vehiculos;
     }
 
-    
-    public Vendedor(int id,String n,String a,String o,String cE,String clave){
-        this.id=id;
-        this.nombres=n;
-        this.apellidos=a;
-        this.organizacion=o;
-        this.correoElectronico= cE;
-        this.clave=clave;
-        this.vehiculos= new ArrayList<>();
+    public Vendedor(ArrayList<Vehiculo> vehiculos, int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
+        super(id, nombre, apellidos, organizacion, correoElectronico, clave);
+        this.vehiculos = vehiculos;
     }
+
+    
 
     public void saveFile(String nombreArchivo){
         try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
