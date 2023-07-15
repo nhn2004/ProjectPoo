@@ -135,7 +135,13 @@ public class Usuario implements Saveable {
         int i= Utilitaria.nextId(nomArchivo);
         if (tipoUsuario.toLowerCase().equals("vendedor")){
                Vendedor v= new Vendedor(i,n,a,o,cE,clav);
-               v.saveFile(nombreArchivo);
+               v.saveFile(nomArchivo);
+        }
+        else if(tipoUsuario.toLowerCase().equals("comprador")){
+            System.out.println("Ingrese un correo");
+            String co = sc.nextLine();
+            Comprador c = new Comprador(i, n, a, o, cE, clav, co);
+            co.saveFile(nomArchivo);
         }
     }
     
