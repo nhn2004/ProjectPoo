@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Dom
  */
-public class Vehiculo {
+public class Vehiculo implements Saveable {
     private String placa;
     private String modelo;
     private String marca;
@@ -99,7 +99,10 @@ public class Vehiculo {
                 + "Vendedor = "+this.vendedor;
     }
 
-    
+     @Override
+     public void saveFile(String nombreArchivo){
+         
+     }
     
     
 }

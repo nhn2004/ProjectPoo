@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author HP
  */
-public class Usuario implements Saveable {
+public class Usuario implements Saveable,Readable<T> {
     private int id;
     private String nombre;
     private String apellidos;
@@ -94,29 +94,41 @@ public class Usuario implements Saveable {
         }
     }
     
-    public static ArrayList<Object> readFile(String nombreArchivo){
-        ArrayList<Usuario>  users= new ArrayList<>();
-        ArrayList<Comprador> compradores = new ArrayList<>();
+    //@Override
+    public ArrayList<Usuario> readFile(String nombreArchivo){
+        ArrayList<Usuario> users= new ArrayList<>();
         try(Scanner sc= new Scanner(new File(nombreArchivo))){
           while(sc.hasNextLine()){
             String linea= sc.nextLine();
-            String[] el=linea.split("\\|");//el: elementos------ si el usuario es vendedor tendrá estos parametros, si es comprador tendrá uno mas que es correo
-            //por lo que se podria ver el tamaño del split
+            String[] el=linea.split("\\|");
             if(el.length==6){
-                Usuario user= new Usuario(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5]);
-                users.add(user);
+                Vendedor vende= new Vendedor(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5]);
+                users.add(vende);
             }
             else if(el.length==7){
-                Comprador c = new Comprador(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5],el[6]);//el orden de los parametros no me queda del todo claro
-                compradores.add(c);
+                Comprador c = new Comprador(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5],el[6]);
+                users.add(c);
             }
           }
         }
         catch(Exception e){
           System.out.println(e.getMessage());
         }
-        return users,compradores;
+        return users;
     }
+    
+        public static String buscarClave(String nombreArchivo,String correoElectronico){
+        ArrayList<Usuario> lV= Usuario.readFile(nombreArchivo);
+        String clave= "";
+        for (Vendedor v:lV){
+            if (v.getCorreoElectronico().equals(correoElectronico)){
+                clave=v.getClave();
+            }
+        }
+        return clave;
+    }
+    
+    
     
     public void registroNuevo(String nomArchivo){
         Scanner sc = new Scanner(System.in);
@@ -141,7 +153,7 @@ public class Usuario implements Saveable {
             System.out.println("Ingrese un correo");
             String co = sc.nextLine();
             Comprador c = new Comprador(i, n, a, o, cE, clav, co);
-            co.saveFile(nomArchivo);
+            c.saveFile(nomArchivo);
         }
     }
     

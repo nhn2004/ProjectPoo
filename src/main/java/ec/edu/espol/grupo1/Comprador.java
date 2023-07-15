@@ -40,7 +40,7 @@ public class Comprador extends Usuario{
         this.oferta = oferta;
     }
 
-  
+  @Override
   public void saveFile(String nombreArchivo){
     try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
         pw.println(super.toString()+"|"+this.correo);  

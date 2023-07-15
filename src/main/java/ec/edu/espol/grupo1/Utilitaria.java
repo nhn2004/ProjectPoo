@@ -159,7 +159,7 @@ class Utilitaria {
         return null;
     }
     
-    public static ArrayList<Desconocido> listaAtributos(){
+    public static ArrayList<Object> listaAtributos(){
         
     }
     

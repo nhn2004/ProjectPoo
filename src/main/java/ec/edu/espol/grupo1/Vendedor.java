@@ -7,8 +7,6 @@ package ec.edu.espol.grupo1;
  */
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,32 +27,6 @@ public class Vendedor extends Usuario{
     }
 
 
-    public static ArrayList<Vendedor> readFile(String nombreArchivo){
-        ArrayList<Vendedor>  vendedores= new ArrayList<>();
-        try(Scanner sc= new Scanner(new File(nombreArchivo))){
-          while(sc.hasNextLine()){
-            String linea= sc.nextLine();
-            String[] el=linea.split("\\|");//el: elementos
-            Vendedor vendedor= new Vendedor(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5]);
-            vendedores.add(vendedor);
-          }
-        }catch(Exception e){
-          System.out.println(e.getMessage());
-        }
-        return vendedores;
-    }
-
-    public static String buscarClave(String nombreArchivo,String correoElectronico){
-        ArrayList<Vendedor> lV= Vendedor.readFile(nombreArchivo);
-        String clave= "";
-        for (Vendedor v:lV){
-            if (v.correoElectronico.equals(correoElectronico)){
-                clave=v.clave;
-            }
-        }
-        return clave;
-    }
-    
     
  public void registrarNuevoVendedor(Scanner sc,String nombreArchivo){
    System.out.println("Ingrese nombres: ");
@@ -127,7 +99,9 @@ public class Vendedor extends Usuario{
          String vidrios = sc.nextLine();
          System.out.print("Ingrese la transmisión: ");
          String transmision = sc.nextLine();
-         Camioneta c= new Camioneta(placa, modelo, marca, tipoMotor, año, recorrido, color, tipoCombustible, precio,traccion, vidrios, transmision);
+         Camioneta c= new Camioneta(placa, modelo, marca, 
+                 tipoMotor, año, recorrido, color, tipoCombustible, 
+                 precio,traccion, vidrios, transmision);
          c.saveFile(nombreArchivo);
          
          break;
@@ -136,7 +110,9 @@ public class Vendedor extends Usuario{
          String vid = sc.nextLine();
          System.out.print("Ingrese la transmisión: ");
          String transm = sc.nextLine();
-         Auto a= new Auto(placa, modelo, marca, tipoMotor, año, recorrido, color, tipoCombustible, precio,vid, transm);
+         Auto a= new Auto(placa, modelo, marca, 
+                 tipoMotor, año, recorrido, color, 
+                 tipoCombustible, precio,vid, transm);
          a.saveFile(nombreArchivo);
          break;
        case "moto":
@@ -153,19 +129,10 @@ public class Vendedor extends Usuario{
     }
  }
  
- 
  public void aceptarOferta(String cE,String clave){
-   //validar si la clave es correcta: calcular el hash de la clave y compararla con la que está almacenada en el archivo.
-     /*
-El vendedor podrá revisar las ofertas para los vehículos ingresando la placa del vehículo. Las ofertas deben presentarse de una manera interactiva al momento de revisar las ofertas. La aplicación presenta una oferta a la vez y debe permitirle al vendedor revisar la siguiente oferta, en su defecto, cuando vaya avanzado entre las ofertas, debe tener la posibilidad de regresar a revisar otra oferta.*/
-
- 
-
     Scanner sc= new Scanner(System.in);
     System.out.println("Ingrese la placa: ");
     String placa= sc.nextLine();
-
-
 
     Vehiculo v= Utilitaria.filtrarPorPlaca(vehiculos,placa);
     System.out.println(""+v.getMarca()+" "+v.getModelo()+" Precio: "+v.getPrecio());
