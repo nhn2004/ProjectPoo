@@ -76,6 +76,23 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
         }
     return clave;
     }
+
+  public void ofertaPorVehiculo(ArrayList<Vehiculo> vehiculos, String tipovehiculo, 
+          double recorridoInicio, double recorridoFin, int añoInicio, int añoFin, double precioInicio, 
+          double precioFin, String nomArchivo){
+    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos, tipovehiculo, 
+            recorridoInicio, recorridoFin, añoInicio, añoFin, precioInicio, precioFin);
+    Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Ingrese la oferta por el vehiculo elegido: ");
+    double monto = sc.nextDouble();
+    Oferta oferta = new Oferta(monto, vehiculoSeleccionado, this);
+    oferta.saveFile(nomArchivo);//no estoy muy seguro de como obter el nombre del archivo donde se registrará la oferta, mientras tanto la pongo en los 
+    //parametros del constructor
+
+    }
+  
+  /*
   public void registrarNuevoComprador(Scanner sc,String nombreArchivo){
    System.out.println("Ingrese nombres: ");
    String n= sc.nextLine();
@@ -93,19 +110,5 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
    Comprador c= new Comprador(i,n,a,o,cE,clav,co);
    c.saveFile(nombreArchivo);
  }
-  
-  public void ofertaPorVehiculo(ArrayList<Vehiculo> vehiculos, String tipovehiculo, 
-          double recorridoInicio, double recorridoFin, int añoInicio, int añoFin, double precioInicio, 
-          double precioFin, String nomArchivo){
-    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos, tipovehiculo, 
-            recorridoInicio, recorridoFin, añoInicio, añoFin, precioInicio, precioFin);
-    Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
-    Scanner sc = new Scanner(System.in);
-    System.out.println("Ingrese la oferta por el vehiculo elegido: ");
-    double monto = sc.nextDouble();
-    Oferta oferta = new Oferta(monto, vehiculoSeleccionado, this);
-    oferta.saveFile(nomArchivo);//no estoy muy seguro de como obter el nombre del archivo donde se registrará la oferta, mientras tanto la pongo en los 
-    //parametros del constructor
-
-    }
+  */
 }

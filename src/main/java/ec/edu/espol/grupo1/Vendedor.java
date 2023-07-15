@@ -52,22 +52,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     return clave;
     }
 
- public void registrarNuevoVendedor(Scanner sc,String nombreArchivo){
-   System.out.println("Ingrese nombres: ");
-   String n= sc.nextLine();
-   System.out.println("Ingrese apellidos: ");
-   String a= sc.nextLine();
-   System.out.println("Ingrese organización: ");
-   String o= sc.nextLine();
-   System.out.println("Ingrese correo electrónico: ");
-   String cE= sc.nextLine();
-   System.out.println("Ingrese clave: ");
-   String clav= sc.nextLine();
-   int i= Utilitaria.nextId(nombreArchivo);
-   Vendedor v= new Vendedor(i,n,a,o,cE,clav);
-   v.saveFile(nombreArchivo);
- }
- 
+
  public void registrarNuevoVehiculo(String nombreArchivo){
     Scanner sc= new Scanner(System.in);
 
@@ -209,5 +194,23 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     }while (seleccion != 2);
    }
 
+ 
+ /*
+ public void registrarNuevoVendedor(Scanner sc,String nombreArchivo){
+   System.out.println("Ingrese nombres: ");
+   String n= sc.nextLine();
+   System.out.println("Ingrese apellidos: ");
+   String a= sc.nextLine();
+   System.out.println("Ingrese organización: ");
+   String o= sc.nextLine();
+   System.out.println("Ingrese correo electrónico: ");
+   String cE= sc.nextLine();
+   System.out.println("Ingrese clave: ");
+   String clav= sc.nextLine();
+   int i= Utilitaria.nextId(nombreArchivo);
+   Vendedor v= new Vendedor(i,n,a,o,cE,clav);
+   v.saveFile(nombreArchivo);
+ }
+ */
  }
 

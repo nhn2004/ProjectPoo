@@ -93,7 +93,49 @@ public class Usuario implements Saveable {
           System.out.println(e.getMessage());
         }
     }
+
+/*
+    public static ArrayList<Usuario> readFile(String nombreArchivo){
+        ArrayList<Usuario> users= new ArrayList<>();
+        try(Scanner sc= new Scanner(new File(nombreArchivo))){
+          while(sc.hasNextLine()){
+            String linea= sc.nextLine();
+            String[] el=linea.split("\\|");
+            if (el.length == 7 && nombreArchivo.equals("compradores.txt")){
+                Usuario comprador= new Comprador(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5],el[6]);    
+                users.add(comprador);
+            }
+            else if (el.length == 6 && nombreArchivo.equals("vendedores.txt")){
+                Usuario vendedor = new Vendedor(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5]);
+                users.add(vendedor);
+            }
+          }
+        }
+        catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+        return users;
+    }//no seguro si funciona, esta aqui porsi
+
     
+    public static String buscarClave(String nombreArchivo,String correoElectronico){
+        ArrayList<Usuario> users = Usuario.readFile(nombreArchivo);
+        String clave= "";
+        for (Usuario user: users){
+            if (user instanceof Comprador){
+                Comprador c = (Comprador) user;
+                if (c.getCorreoElectronico().equals(correoElectronico))
+                    clave=c.getClave();
+            }
+            else if (user instanceof Vendedor){
+                Vendedor v = (Vendedor) user;
+                if (v.getCorreoElectronico().equals(correoElectronico))
+                    clave=v.getClave();
+            }
+        }
+    return clave;
+    }//tampoco seguro si funciona, ahi esta porsi
+*/
     public void registroNuevo(String nomArchivo){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese su rol: ");
@@ -120,5 +162,7 @@ public class Usuario implements Saveable {
             c.saveFile(nomArchivo);
         }
     }
+    
+    
     
 }
