@@ -4,6 +4,9 @@
  */
 package ec.edu.espol.grupo1;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -100,9 +103,15 @@ public class Vehiculo implements Saveable {
     }
 
      @Override
-     public void saveFile(String nombreArchivo){
-         
-     }
+    public void saveFile(String nombreArchivo){
+        try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
+            pw.println(toString());  
+        } 
+        catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+    }
+    
     
     
 }

@@ -19,7 +19,8 @@ public class Comprador extends Usuario{
   private String correo;
   private Oferta oferta;
 
-    public Comprador(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave,String correo) {
+    public Comprador(int id, String nombre, String apellidos, String organizacion, 
+            String correoElectronico, String clave,String correo) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
         this.correo = correo;
     }
@@ -50,6 +51,31 @@ public class Comprador extends Usuario{
         }
     }
   
+  public static ArrayList<Comprador> readFile(String nombreArchivo){
+        ArrayList<Comprador> lC= new ArrayList<>();
+        try(Scanner sc= new Scanner(new File(nombreArchivo))){
+          while(sc.hasNextLine()){
+            String linea= sc.nextLine();
+            String[] el=linea.split("\\|");
+            Comprador comprador= new Comprador(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5],el[6]);    
+            lC.add(comprador);
+          }
+        }
+        catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+        return lC;
+    }
+    
+public static String buscarClave(String nombreArchivo,String correoElectronico){
+        ArrayList<Comprador> lC= Comprador.readFile(nombreArchivo);
+        String clave= "";
+        for (Comprador c:lC){
+            if (c.getCorreoElectronico().equals(correoElectronico))
+                clave=c.getClave();
+        }
+    return clave;
+    }
   public void registrarNuevoComprador(Scanner sc,String nombreArchivo){
    System.out.println("Ingrese nombres: ");
    String n= sc.nextLine();
@@ -68,9 +94,11 @@ public class Comprador extends Usuario{
    c.saveFile(nombreArchivo);
  }
   
-  public void ofertaPorVehiculo(ArrayList<Vehiculo> vehiculos, String tipovehiculo, double recorridoInicio, double recorridoFin, int añoInicio, int añoFin, double precioInicio, 
+  public void ofertaPorVehiculo(ArrayList<Vehiculo> vehiculos, String tipovehiculo, 
+          double recorridoInicio, double recorridoFin, int añoInicio, int añoFin, double precioInicio, 
           double precioFin, String nomArchivo){
-    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos, tipovehiculo, recorridoInicio, recorridoFin, añoInicio, añoFin, precioInicio, precioFin);
+    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos, tipovehiculo, 
+            recorridoInicio, recorridoFin, añoInicio, añoFin, precioInicio, precioFin);
     Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
     Scanner sc = new Scanner(System.in);
     System.out.println("Ingrese la oferta por el vehiculo elegido: ");

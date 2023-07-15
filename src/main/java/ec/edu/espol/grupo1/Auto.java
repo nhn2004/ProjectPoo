@@ -4,6 +4,10 @@
  */
 package ec.edu.espol.grupo1;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+
 /**
  *
  * @author nicol
@@ -34,5 +38,16 @@ public class Auto extends Vehiculo {
                 + "Vidrios = "+this.vidrios+",/n"
                 + "Transmisión = "+this.transmision;
     }
+    
+    @Override
+    public void saveFile(String nombreArchivo){
+        try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
+            pw.println(toString());//si es que se cambia el toString  
+        } 
+        catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+    }
+    
        
 }

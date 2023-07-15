@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author HP
  */
-public class Usuario implements Saveable,Readable<T> {
+public class Usuario implements Saveable {
     private int id;
     private String nombre;
     private String apellidos;
@@ -94,42 +94,6 @@ public class Usuario implements Saveable,Readable<T> {
         }
     }
     
-    //@Override
-    public ArrayList<Usuario> readFile(String nombreArchivo){
-        ArrayList<Usuario> users= new ArrayList<>();
-        try(Scanner sc= new Scanner(new File(nombreArchivo))){
-          while(sc.hasNextLine()){
-            String linea= sc.nextLine();
-            String[] el=linea.split("\\|");
-            if(el.length==6){
-                Vendedor vende= new Vendedor(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5]);
-                users.add(vende);
-            }
-            else if(el.length==7){
-                Comprador c = new Comprador(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5],el[6]);
-                users.add(c);
-            }
-          }
-        }
-        catch(Exception e){
-          System.out.println(e.getMessage());
-        }
-        return users;
-    }
-    
-        public static String buscarClave(String nombreArchivo,String correoElectronico){
-        ArrayList<Usuario> lV= Usuario.readFile(nombreArchivo);
-        String clave= "";
-        for (Vendedor v:lV){
-            if (v.getCorreoElectronico().equals(correoElectronico)){
-                clave=v.getClave();
-            }
-        }
-        return clave;
-    }
-    
-    
-    
     public void registroNuevo(String nomArchivo){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese su rol: ");
@@ -157,13 +121,4 @@ public class Usuario implements Saveable,Readable<T> {
         }
     }
     
-    public static String buscarClave(String nombreArchivo,String correoElectronico){
-        ArrayList<Usuario> listaUsuarios= Usuario.readFile(nombreArchivo);
-        String clave= "";
-        for (Usuario user:listaUsuarios){
-            if (user.correoElectronico.equals(correoElectronico))
-                clave=user.clave;
-        }
-    return clave;
-    }
 }

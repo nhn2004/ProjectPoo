@@ -44,7 +44,19 @@ class Utilitaria {
             return "//ERROR";
         } 
    }
-            public static boolean validarClave(String clave,String claveIngresada){
+      public static String buscarClave(String nombreArchivo,String correoElectronico){
+            ArrayList<Vendedor> lV= Vendedor.readFile(nombreArchivo);
+        String clave= "";
+        for (Vendedor v:lV){
+            if (v.getCorreoElectronico().equals(correoElectronico)){
+                clave=v.getClave();
+            }
+        }
+        return clave;
+      }
+      
+      
+      public static boolean validarClave(String clave,String claveIngresada){
           String hash1= Utilitaria.generarHash(clave);
           String hash2= Utilitaria.generarHash(claveIngresada);
           return Objects.equals(hash1,hash2);
