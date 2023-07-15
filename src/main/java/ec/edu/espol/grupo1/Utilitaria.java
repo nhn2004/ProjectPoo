@@ -9,8 +9,12 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.Scanner;
+import javax.mail.*;
+import javax.mail.internet.*;
 
 /**
  *
@@ -143,28 +147,27 @@ class Utilitaria {
             sc.nextInt();
             
             switch (seleccion) {
-                case 1:
+                case 1 -> {
                     i++;
                     if (i >= tamaño) {
                         System.out.println("Has revisado todos los vehículos.");
                         i--;
                     }
-                    break;
+                }
 
-                case 2:
+                case 2 -> {
                     return v;
+                }
 
-                case 3:
+                case 3 -> {
                     i--;
                     if (i < 0) {
                         System.out.println("Ya estás en el primer vehículo.");
                         i++;
                     }
-                    break;
+                }
 
-                default:
-                    System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
-                    break;
+                default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
             }      
 
         }while (seleccion != 2);
@@ -172,7 +175,40 @@ class Utilitaria {
     }
     
     public static ArrayList<Object> listaAtributos(){
-        
+        ArrayList<Object> o = new ArrayList<>();
+        return o;
     }
     
+    public static void enviarCorreo(String correoDestino, String asunto, String mensaje){
+        String correoEnvio = "nhncevallos@gmail.com";
+        String contraseña = "olbapqxbumuxutep";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(correoEnvio, contraseña);
+            }
+        });
+
+        try {
+            
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoEnvio));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correoDestino));
+            message.setSubject(asunto);
+            message.setText(mensaje);
+            
+            Transport.send(message);
+            System.out.println("Correo electrónico enviado exitosamente.");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
 }

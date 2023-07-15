@@ -177,19 +177,24 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
                         i--;
                     }
             }
+                case 2 -> {
+                    String mensaje= "Hola, es un placer hacer negocios contigo, mi "+v.getMarca()+" "+v.getModelo()+" pronto sera tuyo, responde a este correo para hablar";
+                    String asunto= ""+v.getVendedor().getNombre()+" acepto tu oferta!!!";
+                    Utilitaria.enviarCorreo(oferta.getComprador().getCorreo(), asunto, mensaje);
+                    // solo falta elimina el auto del sistema
+                }
 
-                case 2, 3 -> {
+                case 3 -> {
                     i--;
                     if (i < 0) {
                         System.out.println("Ya estás en el primer vehículo.");
                         i++;
                     }
             }
-//                    elimina de la base ese vehiculo;
+
 
                 default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
             }
-//                    elimina de la base ese vehiculo;
               
     }while (seleccion != 2);
    }
