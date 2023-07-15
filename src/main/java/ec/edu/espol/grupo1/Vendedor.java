@@ -69,6 +69,105 @@ public class Vendedor{
         }
         return clave;
     }
+    
+    
+ public void registrarNuevoVendedor(Scanner sc,String nombreArchivo){
+   System.out.println("Ingrese nombres: ");
+   String n= sc.nextLine();
+   System.out.println("Ingrese apellidos: ");
+   String a= sc.nextLine();
+   System.out.println("Ingrese organización: ");
+   String o= sc.nextLine();
+   System.out.println("Ingrese correo electrónico: ");
+   String cE= sc.nextLine();
+   System.out.println("Ingrese clave: ");
+   String clav= sc.nextLine();
+   int i= Utilitaria.nextId(nombreArchivo);
+   Vendedor v= new Vendedor(i,n,a,o,cE,clav);
+   v.saveFile(nombreArchivo);
+ }
+ 
+ public void registrarNuevoVehiculo(String nombreArchivo){
+    Scanner sc= new Scanner(System.in);
+
+    System.out.println("Ingrese su correo electrónico: ");
+    String cE= sc.nextLine();
+    String claveSistema= Vendedor.buscarClave(nombreArchivo,cE);
+    System.out.println("Ingrese su clave: ");
+    boolean validacionClave= Utilitaria.validarClave(claveSistema, clave);
+    if (validacionClave==true){
+      System.out.print("Ingrese la placa: ");
+      String placa = sc.nextLine();
+      boolean validacion=true;
+
+      for (Vehiculo v:vehiculos){
+     if (!(placa.equals(v.getPlaca()))){
+       validacion=false;}
+      }
+
+   if (validacion==false){
+      System.out.println("Ingrese el tipo de Vehículo a registrar: ");
+     String t= sc.nextLine();
+
+       System.out.print("Ingrese la marca: ");
+     String marca = sc.nextLine();
+
+     System.out.print("Ingrese el modelo: ");
+     String modelo = sc.nextLine();
+
+     System.out.print("Ingrese el tipo de motor: ");
+     String tipoMotor = sc.nextLine();
+
+     System.out.print("Ingrese el año: ");
+     int año = sc.nextInt();
+     sc.nextLine();
+     System.out.print("Ingrese el recorrido: ");
+     int recorrido = sc.nextInt();
+     sc.nextLine(); // Consumir la nueva línea después de leer el número
+     System.out.print("Ingrese el color: ");
+     String color = sc.nextLine();
+     System.out.print("Ingrese el tipo de combustible: ");
+     String tipoCombustible = sc.nextLine();
+     System.out.print("Ingrese el precio: ");
+     double precio = sc.nextDouble();
+     sc.nextLine(); // Consumir la nueva línea después de leer el número
+
+    String tipo= t.toLowerCase();
+     switch (tipo){
+       case "camioneta":
+         //Tracción,vidrios,transmision
+         System.out.print("Ingrese la tracción: ");
+         String traccion = sc.nextLine();
+         System.out.print("Ingrese los vidrios: ");
+         String vidrios = sc.nextLine();
+         System.out.print("Ingrese la transmisión: ");
+         String transmision = sc.nextLine();
+         Camioneta c= new Camioneta(placa, modelo, marca, tipoMotor, año, recorrido, color, tipoCombustible, precio,traccion, vidrios, transmision);
+         c.saveFile(nombreArchivo);
+         
+         break;
+       case "auto":
+         System.out.print("Ingrese los vidrios: ");
+         String vid = sc.nextLine();
+         System.out.print("Ingrese la transmisión: ");
+         String transm = sc.nextLine();
+         Auto a= new Auto(placa, modelo, marca, tipoMotor, año, recorrido, color, tipoCombustible, precio,vid, transm);
+         a.saveFile(nombreArchivo);
+         break;
+       case "moto":
+         Vehiculo m= new Vehiculo(placa, modelo, marca, tipoMotor, año, recorrido, color, tipoCombustible, precio);
+         m.saveFile(nombreArchivo);
+         break;
+       default:
+         Vehiculo d= new Vehiculo(placa, modelo, marca, tipoMotor, año, recorrido, color, tipoCombustible, precio);
+         d.saveFile(nombreArchivo);
+         break;
+     }
+
+   }
+    }
+ }
+ 
  
  public void aceptarOferta(String cE,String clave){
    //validar si la clave es correcta: calcular el hash de la clave y compararla con la que está almacenada en el archivo.
@@ -135,31 +234,8 @@ El vendedor podrá revisar las ofertas para los vehículos ingresando la placa d
                     break;
             }
       
-      
-      
-      
-
     }while (seleccion != 2);
-
- 
-
-
    }
-/*
-     Ingrese la placa: PBA5050
-     Renault Logan 1.6 Precio: 16000
-     Se han realizado 3 ofertas
-     Oferta 1
-     Correo: jperez@gmail.com
-     Precio Ofertado: 15500
-     1.- Siguiente Oferta
-     2.- Aceptar Oferta
-*/
-   /*Cuando el vendedor acepta la oferta,
-el vehículo que está a la venta debe eliminarse del sistema
-y enviarle un correo al comprador del cual se aceptó la oferta confirmándole que se ha aceptado su oferta.*/
- 
-
 
  }
 

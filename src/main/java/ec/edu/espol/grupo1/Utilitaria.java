@@ -4,7 +4,12 @@
  */
 package ec.edu.espol.grupo1;
 
+import java.io.File;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -13,6 +18,38 @@ import java.util.Scanner;
  */
 class Utilitaria {
     
+      public static int nextId(String nombreArchivo){
+    int id=0;
+    try(Scanner sc= new Scanner(new  File(nombreArchivo))){
+      while(sc.hasNextLine()){
+        String linea=sc.nextLine();
+        String[] elementos=linea.split("\\|");
+        id=Integer.parseInt(elementos[0]);
+      }
+    } catch (Exception e){
+    }
+    return id+1;
+  }
+      public static String generarHash (String input) {
+        try{
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hash= md.digest(input.getBytes(StandardCharsets.UTF_8));
+        BigInteger number = new BigInteger(1, hash);
+        StringBuilder s = new StringBuilder(number.toString(16));
+        while (s.length() < 64){
+            s.insert(0, '0');
+        }
+        return s.toString();
+        } catch(Exception e){
+            return "//ERROR";
+        } 
+   }
+            public static boolean validarClave(String clave,String claveIngresada){
+          String hash1= Utilitaria.generarHash(clave);
+          String hash2= Utilitaria.generarHash(claveIngresada);
+          return Objects.equals(hash1,hash2);
+      }
+            
     public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, double recorridoFin, 
             int añoInicio, int añoFin, double precioInicio, double precioFin){
         
@@ -121,4 +158,6 @@ class Utilitaria {
         }while (seleccion != 2);
         return null;
     }
+    
+    
 }
