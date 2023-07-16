@@ -47,12 +47,12 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     return clave;
     }
 
- public void registrarNuevoVehiculo(String nombreArchivo){
+ public void registrarNuevoVehiculo(){
     Scanner sc= new Scanner(System.in);
 
     System.out.println("Ingrese su correo electrónico: ");
     String cE= sc.nextLine();
-    String claveSistema= Vendedor.buscarClave(nombreArchivo,cE);
+    String claveSistema= Vendedor.buscarClave("Usuario.txt",cE);
     System.out.println("Ingrese su clave: ");
     String clave= sc.nextLine();
     boolean validacionClave= Utilitaria.validarClave(claveSistema, clave);
@@ -105,7 +105,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
            Camioneta c= new Camioneta(placa, modelo, marca,
                    tipoMotor, año, recorrido, color, tipoCombustible,
                    precio,super.getId(),traccion, vidrios, transmision);
-           c.saveFile(nombreArchivo);
+           c.saveFile("Vehiculos.txt");
            this.vehiculos.add(c);
               }
        case "auto" -> {
@@ -116,12 +116,12 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
            Auto a= new Auto(placa, modelo, marca,
                    tipoMotor, año, recorrido, color,
                    tipoCombustible, precio,super.getId(),vid, transm);
-           a.saveFile(nombreArchivo);
+           a.saveFile("Vehiculos.txt");
            this.vehiculos.add(a);
               }
        case "moto" -> {
            Vehiculo m= new Vehiculo(placa, modelo, marca, tipoMotor, año, recorrido, color, tipoCombustible, precio,super.getId());
-           m.saveFile(nombreArchivo);
+           m.saveFile("Vehiculos.txt");
            this.vehiculos.add(m);
               }
        

@@ -79,53 +79,54 @@ class Utilitaria {
             int añoInicio, long añoFin, double precioInicio, float precioFin){
         
         ArrayList<Vehiculo> listaRetorno = new ArrayList<>();
-        ArrayList<Vehiculo> vehiculos = Vehiculo.readFile("Vehiculo.txt");
-         for (Vehiculo v:vehiculos){
           switch (tipovehiculo){
             case "camioneta" -> {
-                if(v instanceof Camioneta){
-                    if(v.getRecorrido() <= recorridoFin &&
-                            v.getRecorrido() >= recorridoInicio &&
-                            v.getAño()<= añoFin && v.getAño()>= añoInicio &&
-                            v.getPrecio()<= precioFin && v.getPrecio()>= precioInicio)
-                        listaRetorno.add(v);}
+                ArrayList<Camioneta> camionetas = Camioneta.readFile("Camioneta.txt");
+                for(Camioneta c: camionetas){
+                    if(c.getRecorrido() <= recorridoFin &&
+                            c.getRecorrido() >= recorridoInicio &&
+                            c.getAño()<= añoFin && c.getAño()>= añoInicio &&
+                            c.getPrecio()<= precioFin && c.getPrecio()>= precioInicio)
+                        listaRetorno.add(c);
+                }
             }
             case "auto" -> {
-                if(v instanceof Auto){
-                    if(v.getRecorrido()<= recorridoFin &&
-                            v.getRecorrido()>= recorridoInicio &&
-                            v.getAño()<= añoFin &&
-                            v.getAño()>= añoInicio &&
-                            v.getPrecio()<= precioFin &&
-                            v.getPrecio()>= precioInicio)
-                        listaRetorno.add(v);} 
-            }
+                ArrayList<Auto> autos = Auto.readFile("Auto.txt");
+                for(Auto a: autos){
+                    if(a.getRecorrido()<= recorridoFin &&
+                            a.getRecorrido()>= recorridoInicio &&
+                            a.getAño()<= añoFin &&
+                            a.getAño()>= añoInicio &&
+                            a.getPrecio()<= precioFin &&
+                            a.getPrecio()>= precioInicio)
+                        listaRetorno.add(a);} 
+                }
             case "moto" -> {
-                if(v instanceof Vehiculo){
-                    if(v.getRecorrido()<= recorridoFin &&
-                            v.getRecorrido()>= recorridoInicio &&
-                            v.getAño()<= añoFin &&
-                            v.getAño()>= añoInicio &&
-                            v.getPrecio()<= precioFin &&
-                            v.getPrecio()>= precioInicio)
-                        listaRetorno.add(v);} 
-            }
+                ArrayList<Moto> motos = Moto.readFile("Moto.txt");
+                for(Moto m: motos){
+                    if(m.getRecorrido()<= recorridoFin &&
+                            m.getRecorrido()>= recorridoInicio &&
+                            m.getAño()<= añoFin &&
+                            m.getAño()>= añoInicio &&
+                            m.getPrecio()<= precioFin &&
+                            m.getPrecio()>= precioInicio)
+                        listaRetorno.add(m);} 
+                }
             default -> {
-                if(v instanceof Vehiculo){
-                    if(v.getRecorrido()<= recorridoFin &&
-                            v.getRecorrido()>= recorridoInicio &&
-                            v.getAño()<= añoFin &&
-                            v.getAño()>= añoInicio &&
-                            v.getPrecio()<= precioFin &&
-                            v.getPrecio()>= precioInicio)
-                        listaRetorno.add(v);
-            } 
-            
-           } 
+                ArrayList<Moto> motos = Moto.readFile("Moto.txt");
+                for(Moto m: motos){
+                    if(m.getRecorrido()<= recorridoFin &&
+                            m.getRecorrido()>= recorridoInicio &&
+                            m.getAño()<= añoFin &&
+                            m.getAño()>= añoInicio &&
+                            m.getPrecio()<= precioFin &&
+                            m.getPrecio()>= precioInicio)
+                        listaRetorno.add(m);} 
+                } 
+           }
+            return listaRetorno;
           }
-         }
-        return listaRetorno;
-    }
+    
     
     public static ArrayList<Vehiculo> filtrarVehiculos(String tipovehiculo, double recorridoInicio, float recorridoFin, 
         int añoInicio, long añoFin, double precioInicio){
