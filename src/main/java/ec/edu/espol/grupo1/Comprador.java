@@ -16,21 +16,11 @@ import java.util.Scanner;
  */
 public class Comprador extends Usuario{
 
-  private String correo;
   private Oferta oferta;
 
     public Comprador(int id, String nombre, String apellidos, String organizacion, 
-            String correoElectronico, String clave,String correo) {
+            String correoElectronico, String clave) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
-        this.correo = correo;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
     }
 
     public Oferta getOferta() {
@@ -41,10 +31,10 @@ public class Comprador extends Usuario{
         this.oferta = oferta;
     }
 
-  @Override
+  @Override//se supone q ya lo hereda asi q despues lo borro
   public void saveFile(String nombreArchivo){
     try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
-        pw.println(super.toString()+"|"+this.correo);  
+        pw.println(super.toString());  
         } 
     catch(Exception e){
         System.out.println(e.getMessage());
@@ -57,7 +47,7 @@ public class Comprador extends Usuario{
           while(sc.hasNextLine()){
             String linea= sc.nextLine();
             String[] el=linea.split("\\|");
-            Comprador comprador= new Comprador(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5],el[6]);    
+            Comprador comprador= new Comprador(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5]);    
             lC.add(comprador);
           }
         }
@@ -79,7 +69,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
 
   public void ofertaPorVehiculo(ArrayList<Vehiculo> vehiculos, String tipovehiculo, 
           double recorridoInicio, double recorridoFin, int añoInicio, int añoFin, double precioInicio, 
-          double precioFin, String nomArchivo){
+          double precioFin){
     ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos, tipovehiculo, 
             recorridoInicio, recorridoFin, añoInicio, añoFin, precioInicio, precioFin);
     Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
@@ -87,7 +77,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     System.out.println("Ingrese la oferta por el vehiculo elegido: ");
     double monto = sc.nextDouble();
     Oferta oferta = new Oferta(monto, vehiculoSeleccionado, this);
-    oferta.saveFile(nomArchivo);//no estoy muy seguro de como obter el nombre del archivo donde se registrará la oferta, mientras tanto la pongo en los 
+    //no estoy muy seguro de como obter el nombre del archivo donde se registrará la oferta, mientras tanto la pongo en los 
     //parametros del constructor
 
     }
