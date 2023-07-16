@@ -67,6 +67,15 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     return clave;
     }
 
+    public static Comprador searchByID(ArrayList<Comprador> compradores, int id){
+        for (Comprador c: compradores){
+            if (c.getId() == id)
+                return c;
+            
+        }
+        return null;
+    }
+
   public void ofertaPorVehiculo(ArrayList<Vehiculo> vehiculos, String tipovehiculo, 
           double recorridoInicio, double recorridoFin, int añoInicio, int añoFin, double precioInicio, 
           double precioFin){
@@ -76,10 +85,9 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     Scanner sc = new Scanner(System.in);
     System.out.println("Ingrese la oferta por el vehiculo elegido: ");
     double monto = sc.nextDouble();
-    Oferta oferta = new Oferta(monto, vehiculoSeleccionado, this);
-    //no estoy muy seguro de como obter el nombre del archivo donde se registrará la oferta, mientras tanto la pongo en los 
-    //parametros del constructor
-
+    int idOffer = Utilitaria.nextId("Oferta.txt");
+    Oferta oferta = new Oferta(idOffer ,monto, vehiculoSeleccionado, super.getId());
+    oferta.saveFile("Oferta.txt");
     }
   
   /*

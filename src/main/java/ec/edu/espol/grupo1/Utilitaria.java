@@ -65,55 +65,95 @@ class Utilitaria {
           return Objects.equals(hash1,hash2);
       }
             
-    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, double recorridoFin, 
-            int añoInicio, int añoFin, double precioInicio, double precioFin){
+    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, float recorridoFin, 
+            int añoInicio, long añoFin, double precioInicio, float precioFin){
         
-    ArrayList<Vehiculo> listaRetorno = new ArrayList<>();
-    
-    if (precioFin == 0)
-      precioFin = 1000000000000.0;
-    if (recorridoFin == 0)
-      recorridoFin = 1000000000000.0;
-    if (añoFin == 0)
-      añoFin = 100000000;
-    //if (tipovehiculo.equals(null))
-      //tipovehiculo = no se que ponerle aqui para el switch se cumpla en los tres casos y agregue todo
-      //ya que se consideran todos los tipos vehículos
-    
-     for (Vehiculo v:vehiculos){
-      switch (tipovehiculo){
-        case "camioneta" -> {
-            if(v instanceof Camioneta){
-                if(v.getRecorrido() <= recorridoFin &&
-                        v.getRecorrido() >= recorridoInicio &&
-                        v.getAño()<= añoFin && v.getAño()>= añoInicio &&
-                        v.getPrecio()<= precioFin && v.getPrecio()>= precioInicio)
-                    listaRetorno.add(v);}
-        }
-        case "auto" -> {
-            if(v instanceof Auto){
-                if(v.getRecorrido()<= recorridoFin &&
-                        v.getRecorrido()>= recorridoInicio &&
-                        v.getAño()<= añoFin &&
-                        v.getAño()>= añoInicio &&
-                        v.getPrecio()<= precioFin &&
-                        v.getPrecio()>= precioInicio)
-                    listaRetorno.add(v);} 
-        }
-        case "moto" -> {
-            if(v instanceof Vehiculo){
-                if(v.getRecorrido()<= recorridoFin &&
-                        v.getRecorrido()>= recorridoInicio &&
-                        v.getAño()<= añoFin &&
-                        v.getAño()>= añoInicio &&
-                        v.getPrecio()<= precioFin &&
-                        v.getPrecio()>= precioInicio)
-                    listaRetorno.add(v);} 
-        }
-       } 
-     }
-    return listaRetorno;
+        ArrayList<Vehiculo> listaRetorno = new ArrayList<>();
+         for (Vehiculo v:vehiculos){
+          switch (tipovehiculo){
+            case "camioneta" -> {
+                if(v instanceof Camioneta){
+                    if(v.getRecorrido() <= recorridoFin &&
+                            v.getRecorrido() >= recorridoInicio &&
+                            v.getAño()<= añoFin && v.getAño()>= añoInicio &&
+                            v.getPrecio()<= precioFin && v.getPrecio()>= precioInicio)
+                        listaRetorno.add(v);}
+            }
+            case "auto" -> {
+                if(v instanceof Auto){
+                    if(v.getRecorrido()<= recorridoFin &&
+                            v.getRecorrido()>= recorridoInicio &&
+                            v.getAño()<= añoFin &&
+                            v.getAño()>= añoInicio &&
+                            v.getPrecio()<= precioFin &&
+                            v.getPrecio()>= precioInicio)
+                        listaRetorno.add(v);} 
+            }
+            case "moto" -> {
+                if(v instanceof Vehiculo){
+                    if(v.getRecorrido()<= recorridoFin &&
+                            v.getRecorrido()>= recorridoInicio &&
+                            v.getAño()<= añoFin &&
+                            v.getAño()>= añoInicio &&
+                            v.getPrecio()<= precioFin &&
+                            v.getPrecio()>= precioInicio)
+                        listaRetorno.add(v);} 
+            }
+           } 
+         }
+        return listaRetorno;
     }
+    
+    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, float recorridoFin, 
+        int añoInicio, long añoFin, double precioInicio){
+        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos(vehiculos, tipovehiculo,  recorridoInicio,  recorridoFin, añoInicio,  añoFin,  precioInicio, 1000000000000.0f);
+        return vehFiltrados;
+    }
+    
+    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, float recorridoFin, 
+            int añoInicio, long añoFin, float precioFin){
+        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos(vehiculos, tipovehiculo,  recorridoInicio,  recorridoFin, añoInicio,  añoFin,  0.0 , precioFin);
+        return vehFiltrados;
+    }
+    
+    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, float recorridoFin, 
+            int añoInicio, double precioInicio, float precioFin){
+        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos(vehiculos, tipovehiculo,  recorridoInicio,  recorridoFin, añoInicio, 1000000000, precioInicio, precioFin);
+        return vehFiltrados;
+    }
+    
+    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, float recorridoFin, 
+            long añoFin, double precioInicio, float precioFin){
+        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos(vehiculos, tipovehiculo,  recorridoInicio,  recorridoFin, 0, añoFin, precioInicio, precioFin);
+        return vehFiltrados;
+    }
+    
+    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, int añoInicio, long añoFin, 
+            double precioInicio, float precioFin){
+        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos(vehiculos, tipovehiculo,  recorridoInicio, 1000000000000.0f , añoInicio, añoFin, precioInicio, precioFin);
+        return vehFiltrados;
+    }
+    
+     public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, float recorridoFin, int añoInicio, long añoFin, 
+             double precioInicio, float precioFin){
+        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos(vehiculos, tipovehiculo,  0.0, recorridoFin , añoInicio, añoFin, precioInicio, precioFin);
+        return vehFiltrados;
+     }
+     
+      public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos, double recorridoInicio, float recorridoFin, 
+            int añoInicio, long añoFin, double precioInicio, float precioFin){
+        ArrayList<Vehiculo> vehFiltrados = new ArrayList<>();
+        ArrayList<Vehiculo> vF1 = filtrarVehiculos(vehiculos, "camioneta" , recorridoInicio, recorridoFin , añoInicio, añoFin, precioInicio, precioFin);
+        for (Vehiculo v: vF1)
+            vehFiltrados.add(v);
+        ArrayList<Vehiculo> vF2 = filtrarVehiculos(vehiculos, "auto" , recorridoInicio, recorridoFin , añoInicio, añoFin, precioInicio, precioFin);
+        for (Vehiculo v: vF2)
+            vehFiltrados.add(v);
+        ArrayList<Vehiculo> vF3 = filtrarVehiculos(vehiculos, "moto" , recorridoInicio, recorridoFin , añoInicio, añoFin, precioInicio, precioFin);
+        for (Vehiculo v: vF3)
+            vehFiltrados.add(v);
+        return vehFiltrados;
+      }
     
     public static Vehiculo filtrarPorPlaca(ArrayList<Vehiculo> vehiculos, String placa){
         Vehiculo v = new Vehiculo();

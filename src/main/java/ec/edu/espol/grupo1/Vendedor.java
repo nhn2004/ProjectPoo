@@ -159,7 +159,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
       System.out.println("Oferta "+(i+1)+":");
       
       oferta= v.getOfertas().get(i);  
-      System.out.println("Correo: "+oferta.getComprador().getCorreo());
+      System.out.println("Correo: "+oferta.getComprador().getCorreoElectronico());
       System.out.println("Precio "+oferta.getPrecio());
       if (tamaño>0 && i==0){
         System.out.println("1.- Siguiente Oferta");
@@ -187,7 +187,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
                 case 2 -> {
                     String mensaje= "Hola, es un placer hacer negocios contigo, mi "+v.getMarca()+" "+v.getModelo()+" pronto sera tuyo, responde a este correo para hablar";
                     String asunto= ""+v.getVendedor().getNombre()+" acepto tu oferta!!!";
-                    Utilitaria.enviarCorreo(oferta.getComprador().getCorreo(), asunto, mensaje);
+                    Utilitaria.enviarCorreo(oferta.getComprador().getCorreoElectronico(), asunto, mensaje);
                     // solo falta elimina el auto del sistema
                 }
 

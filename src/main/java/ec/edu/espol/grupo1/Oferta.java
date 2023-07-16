@@ -7,23 +7,29 @@ package ec.edu.espol.grupo1;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 /**
  *
  * @author HP
  */
 public class Oferta {
+    private int idOferta;
     private double precio;
     private Vehiculo vehiculo;
     private Comprador comprador;
+    private int idComprador;
 
     public Oferta(){
 
     }
-    public Oferta(double p,Vehiculo v,Comprador c){
+    public Oferta(int idOferta, double p,Vehiculo v, int idComprador){
+      this.idOferta = idOferta;
       precio=p;
       vehiculo=v;
-      comprador=c;
+      this.idComprador = idComprador;
+      ArrayList<Comprador> compradores = Comprador.readFile("Comprador.txt");
+      this.comprador = Comprador.searchByID(compradores, idComprador);
     }
 
     public double getPrecio() {
