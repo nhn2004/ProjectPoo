@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -104,17 +105,35 @@ public class Vehiculo implements Saveable {
                 + "Tipo de combustible = "+this.tipoCosmbustible+",/n"
                 + "Precio = "+this.precio+",/n";
     }
+    
+    public String lineFile(){
+        return ""+this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+this.recorrido+"|"+this.color+"|"+this.tipoCosmbustible+"|"+this.precio+"|"+this.idVendedor;
+    }
 
      @Override
     public void saveFile(String nombreArchivo){
         try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
-            pw.println(this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+this.recorrido+"|"+this.color+"|"+this.tipoCosmbustible+"|"+this.precio+"|"+this.idVendedor);  
+            pw.println(this.lineFile());  
         } 
         catch(Exception e){
           System.out.println(e.getMessage());
         }
     }
     
-    
+    public static ArrayList<Vehiculo> readFile(String nombreArchivo){
+        ArrayList<Vehiculo> lV= new ArrayList<>();
+        try(Scanner sc= new Scanner(new File(nombreArchivo))){
+          while(sc.hasNextLine()){
+            String linea= sc.nextLine();
+            String[] el=linea.split("\\|");
+            Vehiculo vehiculo= new Vehiculo(el[0],el[1],el[2],el[3],Integer.parseInt(el[4]),Double.parseDouble(el[5]),el[6],el[7],Double.parseDouble(el[8]),Integer.parseInt(el[9]));    
+            lV.add(vehiculo);
+          }
+        }
+        catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+        return lV;
+    }
     
 }

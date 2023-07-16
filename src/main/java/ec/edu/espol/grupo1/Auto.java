@@ -40,9 +40,14 @@ public class Auto extends Vehiculo {
     }
     
     @Override
+    public String lineFile(){
+        return super.lineFile()+this.vidrios+"|"+this.transmision;
+    }
+    
+    @Override
     public void saveFile(String nombreArchivo){
         try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
-            pw.println(toString());//si es que se cambia el toString  
+            pw.println(this.lineFile()); 
         } 
         catch(Exception e){
           System.out.println(e.getMessage());

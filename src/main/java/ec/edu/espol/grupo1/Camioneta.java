@@ -4,6 +4,10 @@
  */
 package ec.edu.espol.grupo1;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+
 /**
  *
  * @author nicol
@@ -41,7 +45,22 @@ public class Camioneta extends Vehiculo {
                 + "Vidrios = "+this.vidrios+",/n"
                 + "Transmisión = "+this.transmision+",/n"
                 + "Tracción = "+this.traccion);
- }
+    }
+    
+    @Override
+    public String lineFile(){
+        return super.lineFile()+this.vidrios+"|"+this.transmision+this.traccion;
+    }
+    
+    @Override
+    public void saveFile(String nombreArchivo){
+        try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
+            pw.println(this.lineFile()); 
+        } 
+        catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+    }
     
     
 }
