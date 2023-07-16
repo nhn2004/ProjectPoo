@@ -123,7 +123,7 @@ class Utilitaria {
     public static Vehiculo navegar(ArrayList<Vehiculo> vehiculos){
         int tamaño= vehiculos.size();
         Scanner sc= new Scanner(System.in);
-        int seleccion = 0;
+        int seleccion;
         int i=0;
         Vehiculo v;
         do{
@@ -192,6 +192,7 @@ class Utilitaria {
         props.put("mail.smtp.starttls.enable", "true");
 
         Session session = Session.getInstance(props, new Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(correoEnvio, contraseña);
             }
