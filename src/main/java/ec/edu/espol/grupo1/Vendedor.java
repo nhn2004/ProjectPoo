@@ -144,11 +144,19 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
         return null;
     }
  
- public void aceptarOferta(String cE,String clave){
+ public void aceptarOferta(){
     Scanner sc= new Scanner(System.in);
-    System.out.println("Ingrese la placa: ");
-    String placa= sc.nextLine();
+    System.out.println("Ingrese su correo electrónico: ");
+    String cE= sc.nextLine();
+    String claveSistema= Vendedor.buscarClave("Vendedor.txt",cE);
+    System.out.println("Ingrese su clave: ");
+    String clave= sc.nextLine();
+    boolean validacionClave= Utilitaria.validarClave(claveSistema, clave);
+    if (validacionClave==true){
+        System.out.println("Ingrese la placa: ");
+        String placa= sc.nextLine();
 
+<<<<<<< HEAD
     Vehiculo v= Utilitaria.filtrarPorPlaca(vehiculos,placa);
     System.out.println(""+v.getMarca()+" "+v.getModelo()+" Precio: "+v.getPrecio());
     int tamaño= v.getOfertas().size();
@@ -189,21 +197,65 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
                     String asunto= ""+v.getVendedor().getNombre()+" acepto tu oferta!!!";
                     Utilitaria.enviarCorreo(oferta.getComprador().getCorreoElectronico(), asunto, mensaje);
                     // solo falta elimina el auto del sistema
+=======
+        Vehiculo v= Utilitaria.filtrarPorPlaca(vehiculos,placa);
+        System.out.println(""+v.getMarca()+" "+v.getModelo()+" Precio: "+v.getPrecio());
+        int tamaño= v.getOfertas().size();
+        int seleccion;
+        Oferta oferta;
+        int i=0;
+        do{
+          System.out.println("Oferta "+(i+1)+":");
+
+          oferta= v.getOfertas().get(i);  
+          System.out.println("Correo: "+oferta.getComprador().getCorreo());
+          System.out.println("Precio "+oferta.getPrecio());
+          if (tamaño>0 && i==0){
+            System.out.println("1.- Siguiente Oferta");
+            System.out.println("2.- Aceptar Oferta");
+          }
+          else if(tamaño>i){
+            System.out.println("1.- Siguiente Oferta");
+            System.out.println("2.- Aceptar Oferta");
+            System.out.println("3.- Anterior Oferta");
+          }
+          else{
+            System.out.println("2.- Aceptar Oferta");
+            System.out.println("3.- Anterior Oferta");
+          }
+          seleccion= sc.nextInt();
+          sc.nextInt();
+          switch (seleccion) {
+                    case 1 -> {
+                        i++;
+                        if (i >= tamaño) {
+                            System.out.println("Has revisado todos los vehículos.");
+                            i--;
+                        }
+                }
+                    case 2 -> {
+                        String mensaje= "Hola, es un placer hacer negocios contigo, mi "+v.getMarca()+" "+v.getModelo()+" pronto sera tuyo, responde a este correo para hablar";
+                        String asunto= ""+v.getVendedor().getNombre()+" acepto tu oferta!!!";
+                        Utilitaria.enviarCorreo(oferta.getComprador().getCorreo(), asunto, mensaje);
+                        // solo falta elimina el auto del sistema
+                    }
+
+                    case 3 -> {
+                        i--;
+                        if (i < 0) {
+                            System.out.println("Ya estás en el primer vehículo.");
+                            i++;
+                        }
+>>>>>>> e16a991cae37feef6ae90d4a6c2b285c715ea8b2
                 }
 
-                case 3 -> {
-                    i--;
-                    if (i < 0) {
-                        System.out.println("Ya estás en el primer vehículo.");
-                        i++;
-                    }
-            }
 
+                    default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
+                }
 
-                default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
-            }
-              
-    }while (seleccion != 2);
+        }while (seleccion != 2);
+    }
+    
    }
 
  
