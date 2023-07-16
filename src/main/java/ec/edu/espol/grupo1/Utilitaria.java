@@ -102,15 +102,18 @@ class Utilitaria {
                         listaRetorno.add(v);} 
             }
             default -> {
-                if(v.getRecorrido()<= recorridoFin &&
-                    v.getRecorrido()>= recorridoInicio &&
-                    v.getAño()<= añoFin &&
-                    v.getAño()>= añoInicio &&
-                    v.getPrecio()<= precioFin &&
-                    v.getPrecio()>= precioInicio)
-                    listaRetorno.add(v);} 
+                if(v instanceof Vehiculo){
+                    if(v.getRecorrido()<= recorridoFin &&
+                            v.getRecorrido()>= recorridoInicio &&
+                            v.getAño()<= añoFin &&
+                            v.getAño()>= añoInicio &&
+                            v.getPrecio()<= precioFin &&
+                            v.getPrecio()>= precioInicio)
+                        listaRetorno.add(v);
+            } 
             
            } 
+          }
          }
         return listaRetorno;
     }

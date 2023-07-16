@@ -125,9 +125,9 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
            this.vehiculos.add(m);
               }
        
-     }
+        }
 
-   }
+        }
     }
  }
  
@@ -199,11 +199,8 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
                         if (i < 0) {
                             System.out.println("Ya estás en el primer vehículo.");
                             i++;
-                        }
-                        
+                        } 
                 }
-
-
                     default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
                 }
 
