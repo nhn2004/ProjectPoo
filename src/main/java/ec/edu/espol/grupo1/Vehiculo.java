@@ -102,14 +102,13 @@ public class Vehiculo implements Saveable {
                 + "Recorrido = "+this.recorrido+",/n"
                 + "Color = "+this.color+",/n"
                 + "Tipo de combustible = "+this.tipoCosmbustible+",/n"
-                + "Precio = "+this.precio+",/n"
-                + "Vendedor = "+this.vendedor;
+                + "Precio = "+this.precio+",/n";
     }
 
      @Override
     public void saveFile(String nombreArchivo){
         try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
-            pw.println(toString());  
+            pw.println(this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+this.recorrido+"|"+this.color+"|"+this.tipoCosmbustible+"|"+this.precio+"|"+this.idVendedor);  
         } 
         catch(Exception e){
           System.out.println(e.getMessage());
