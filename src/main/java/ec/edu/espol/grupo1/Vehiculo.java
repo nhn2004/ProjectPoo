@@ -32,7 +32,9 @@ public class Vehiculo implements Saveable {
         
     }
 
-    public Vehiculo(String placa, String modelo, String marca, String tipoMotor, int año, double recorrido, String color, String tipoCosmbustible, double precio, int idVendedor) {
+    public Vehiculo(String placa, String modelo, String marca, String tipoMotor, 
+            int año, double recorrido, String color, String tipoCosmbustible, 
+            double precio, int idVendedor) {
         this.placa = placa;
         this.modelo = modelo;
         this.marca = marca;
@@ -106,7 +108,8 @@ public class Vehiculo implements Saveable {
     }
     
     public String lineFile(){
-        return ""+this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+this.recorrido+"|"+this.color+"|"+this.tipoCosmbustible+"|"+this.precio+"|"+this.idVendedor;
+        return ""+this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+
+                this.recorrido+"|"+this.color+"|"+this.tipoCosmbustible+"|"+this.precio+"|"+this.idVendedor;
     }
 
      @Override
@@ -125,7 +128,9 @@ public class Vehiculo implements Saveable {
           while(sc.hasNextLine()){
             String linea= sc.nextLine();
             String[] el=linea.split("\\|");
-            Vehiculo vehiculo= new Vehiculo(el[0],el[1],el[2],el[3],Integer.parseInt(el[4]),Double.parseDouble(el[5]),el[6],el[7],Double.parseDouble(el[8]),Integer.parseInt(el[9]));    
+            Vehiculo vehiculo= new Vehiculo(el[0],el[1],el[2],el[3],Integer.parseInt(el[4]),
+                    Double.parseDouble(el[5]),el[6],el[7],
+                    Double.parseDouble(el[8]),Integer.parseInt(el[9]));    
             lV.add(vehiculo);
           }
         }

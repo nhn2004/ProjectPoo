@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Properties;
@@ -50,9 +51,9 @@ class Utilitaria {
             s.insert(0, '0');
         }
         return s.toString();
-        } catch(Exception e){
+        } catch (NoSuchAlgorithmException e){
             return "//ERROR";
-        } 
+        }
    }
       public static String buscarClave(String nombreArchivo,String correoElectronico){
             ArrayList<Vendedor> lV= Vendedor.readFile(nombreArchivo);
@@ -110,15 +111,18 @@ class Utilitaria {
                         listaRetorno.add(v);} 
             }
             default -> {
-                if(v.getRecorrido()<= recorridoFin &&
-                    v.getRecorrido()>= recorridoInicio &&
-                    v.getAño()<= añoFin &&
-                    v.getAño()>= añoInicio &&
-                    v.getPrecio()<= precioFin &&
-                    v.getPrecio()>= precioInicio)
-                    listaRetorno.add(v);} 
+                if(v instanceof Vehiculo){
+                    if(v.getRecorrido()<= recorridoFin &&
+                            v.getRecorrido()>= recorridoInicio &&
+                            v.getAño()<= añoFin &&
+                            v.getAño()>= añoInicio &&
+                            v.getPrecio()<= precioFin &&
+                            v.getPrecio()>= precioInicio)
+                        listaRetorno.add(v);
+            } 
             
            } 
+          }
          }
         return listaRetorno;
     }

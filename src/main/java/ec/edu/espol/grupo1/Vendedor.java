@@ -11,14 +11,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Vendedor extends Usuario{
-
     private ArrayList<Vehiculo> vehiculos;
 
     public ArrayList<Vehiculo> getVehiculos() {
         return vehiculos;
     }
-
-
 
     public Vendedor(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
@@ -49,7 +46,6 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
         }
     return clave;
     }
-
 
  public void registrarNuevoVehiculo(String nombreArchivo){
     Scanner sc= new Scanner(System.in);
@@ -129,9 +125,9 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
            this.vehiculos.add(m);
               }
        
-     }
+        }
 
-   }
+        }
     }
  }
      public Vehiculo filtrarPorPlaca(String placa){
@@ -212,11 +208,8 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
                         if (i < 0) {
                             System.out.println("Ya estás en el primer vehículo.");
                             i++;
-                        }
-                        
+                        } 
                 }
-
-
                     default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
                 }
 
@@ -225,23 +218,5 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     
    }
 
- 
- /*
- public void registrarNuevoVendedor(Scanner sc,String nombreArchivo){
-   System.out.println("Ingrese nombres: ");
-   String n= sc.nextLine();
-   System.out.println("Ingrese apellidos: ");
-   String a= sc.nextLine();
-   System.out.println("Ingrese organización: ");
-   String o= sc.nextLine();
-   System.out.println("Ingrese correo electrónico: ");
-   String cE= sc.nextLine();
-   System.out.println("Ingrese clave: ");
-   String clav= sc.nextLine();
-   int i= Utilitaria.nextId(nombreArchivo);
-   Vendedor v= new Vendedor(i,n,a,o,cE,clav);
-   v.saveFile(nombreArchivo);
- }
- */
  }
 
