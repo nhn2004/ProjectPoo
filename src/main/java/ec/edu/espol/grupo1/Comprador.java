@@ -31,15 +31,6 @@ public class Comprador extends Usuario{
         this.oferta = oferta;
     }
 
-  @Override//se supone q ya lo hereda asi q despues lo borro
-  public void saveFile(String nombreArchivo){
-    try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
-        pw.println(super.toString());  
-        } 
-    catch(Exception e){
-        System.out.println(e.getMessage());
-        }
-    }
   
   public static ArrayList<Comprador> readFile(String nombreArchivo){
         ArrayList<Comprador> lC= new ArrayList<>();

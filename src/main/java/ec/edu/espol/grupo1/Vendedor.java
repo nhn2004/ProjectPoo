@@ -19,6 +19,18 @@ public class Vendedor extends Usuario{
 
     public Vendedor(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
+        this.vehiculos=  Vendedor.searchByIDS(id);
+    }
+    
+    public static ArrayList<Vehiculo> searchByIDS(int idVendedor){ //IDS= ID SELLER==ID VENDEDOR
+        ArrayList<Vehiculo> veh = Vehiculo.readFile("vehiculo.txt");
+        ArrayList<Vehiculo> nuevaL= new ArrayList<>();  
+        for (Vehiculo v: veh){
+            if (v.getIdVendedor() == idVendedor)
+                nuevaL.add(v);
+            
+        }
+        return nuevaL;
     }
 
 public static ArrayList<Vendedor> readFile(String nombreArchivo){

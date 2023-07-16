@@ -34,9 +34,6 @@ public class Usuario implements Saveable {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;
@@ -95,8 +92,7 @@ public class Usuario implements Saveable {
     
     public void registroNuevo(String nomArchivo){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese su rol: ");
-        String tipoUsuario = sc.nextLine();
+        
         System.out.println("Ingrese nombres: ");
         String nom= sc.nextLine();
         System.out.println("Ingrese apellidos: ");
@@ -108,11 +104,11 @@ public class Usuario implements Saveable {
         System.out.println("Ingrese clave: ");
         String key= sc.nextLine();
         int i= Utilitaria.nextId(nomArchivo);
-        if (tipoUsuario.toLowerCase().equals("vendedor")){
+        if (this instanceof Vendedor){
                Vendedor v= new Vendedor(i,nom,apellido,org,cE,key);
                v.saveFile(nomArchivo);
         }
-        else if(tipoUsuario.toLowerCase().equals("comprador")){
+        else if(this instanceof Comprador){
             
             Comprador c = new Comprador(i, nom, apellido, org, cE, key);
             c.saveFile(nomArchivo);

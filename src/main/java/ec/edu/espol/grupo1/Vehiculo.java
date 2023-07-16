@@ -49,6 +49,11 @@ public class Vehiculo implements Saveable {
         this.vendedor= Vendedor.searchByID( idVendedor);
     }
 
+    public int getIdVendedor() {
+        return idVendedor;
+    }
+    
+
     public String getPlaca() {
         return placa;
     }
