@@ -14,6 +14,7 @@ import java.util.Scanner;
  *
  * @author HP
  */
+
 public class Oferta {
     private int id;
     private double precio;
@@ -69,7 +70,7 @@ public class Oferta {
         return comprador;
     }
     
-    public ArrayList<Oferta> readFile(String nombreArchivo){
+    public static ArrayList<Oferta> readFile(String nombreArchivo){
         ArrayList<Oferta> lO= new ArrayList<>();
         try(Scanner sc= new Scanner(new File(nombreArchivo))){
           while(sc.hasNextLine()){

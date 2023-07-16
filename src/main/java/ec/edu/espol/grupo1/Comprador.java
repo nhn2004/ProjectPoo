@@ -71,7 +71,6 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
         for (Comprador c: compradores){
             if (c.getId() == id)
                 return c;
-            
         }
         return null;
     }
@@ -86,7 +85,9 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     System.out.println("Ingrese la oferta por el vehiculo elegido: ");
     double monto = sc.nextDouble();
     int idOffer = Utilitaria.nextId("Oferta.txt");
+    
     Oferta oferta1 = new Oferta(idOffer ,monto, vehiculoSeleccionado, super.getId());
+    
     oferta1.saveFile("Oferta.txt");
     }
   

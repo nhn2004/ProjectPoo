@@ -122,22 +122,6 @@ public class Vehiculo implements Saveable {
         }
     }
     
-    public static ArrayList<Vehiculo> readFile(String nombreArchivo){
-        ArrayList<Vehiculo> lV= new ArrayList<>();
-        try(Scanner sc= new Scanner(new File(nombreArchivo))){
-          while(sc.hasNextLine()){
-            String linea= sc.nextLine();
-            String[] el=linea.split("\\|");
-            Vehiculo vehiculo= new Vehiculo(el[0],el[1],el[2],el[3],Integer.parseInt(el[4]),
-                    Double.parseDouble(el[5]),el[6],el[7],
-                    Double.parseDouble(el[8]),Integer.parseInt(el[9]));    
-            lV.add(vehiculo);
-          }
-        }
-        catch(Exception e){
-          System.out.println(e.getMessage());
-        }
-        return lV;
-    }
+    
     
 }

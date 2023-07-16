@@ -130,6 +130,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
         }
     }
  }
+ 
      public Vehiculo filtrarPorPlaca(String placa){
         for (Vehiculo v: this.vehiculos){
             if(placa.equals(v.getPlaca()))

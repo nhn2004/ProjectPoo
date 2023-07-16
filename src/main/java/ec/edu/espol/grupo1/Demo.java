@@ -8,7 +8,7 @@ package ec.edu.espol.grupo1;
  *
  * @author Dom
  */
-public class Main {
+public class Demo {
 
     public static void main(String[] args) {
         System.out.println("Hello");
