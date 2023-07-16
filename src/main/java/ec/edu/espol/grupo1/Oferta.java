@@ -33,13 +33,6 @@ public class Oferta {
         this.idComprador=idC;
         this.placa = placa;
     }
-    
-    public void registrarOferta(int idOferta, double p,Vehiculo v, int idComprador, String placa){
-      Oferta oferta = new Oferta(idOferta, p, idComprador, placa);
-      ArrayList<Comprador> compradores = Comprador.readFile("Comprador.txt");
-      this.comprador = Comprador.searchByID(compradores, idComprador);
-      oferta.saveFile("Oferta.txt");
-    }
 
     public int getId() {
         return id;

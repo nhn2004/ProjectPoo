@@ -41,6 +41,13 @@ class Utilitaria {
     }
     return id+1;
   }
+      
+    public static void registrarOferta(int idOferta, double p,Vehiculo v, int idComprador, String placa){
+      Oferta oferta = new Oferta(idOferta, p, idComprador, placa);
+      ArrayList<Comprador> compradores = Comprador.readFile("Comprador.txt");
+      oferta.setComprador(Comprador.searchByID(compradores, idComprador)); 
+      oferta.saveFile("Oferta.txt");
+    }
       public static String generarHash (String input) {
         try{
         MessageDigest md = MessageDigest.getInstance("SHA-256");

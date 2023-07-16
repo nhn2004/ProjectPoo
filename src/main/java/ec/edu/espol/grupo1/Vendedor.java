@@ -32,7 +32,7 @@ public class Vendedor extends Usuario{
         }
         return nuevaL;
     }
-
+    
 public static ArrayList<Vendedor> readFile(String nombreArchivo){
         ArrayList<Vendedor> lV= new ArrayList<>();
         try(Scanner sc= new Scanner(new File(nombreArchivo))){
@@ -64,7 +64,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
 
     System.out.println("Ingrese su correo electrónico: ");
     String cE= sc.nextLine();
-    String claveSistema= Vendedor.buscarClave("Usuario.txt",cE);
+    String claveSistema= Vendedor.buscarClave("Vendedor.txt",cE);
     System.out.println("Ingrese su clave: ");
     String clave= sc.nextLine();
     boolean validacionClave= Utilitaria.validarClave(claveSistema, clave);
