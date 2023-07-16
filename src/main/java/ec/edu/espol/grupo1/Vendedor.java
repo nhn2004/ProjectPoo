@@ -131,15 +131,6 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     }
  }
  
-     public Vehiculo filtrarPorPlaca(String placa){
-        for (Vehiculo v: this.vehiculos){
-            if(placa.equals(v.getPlaca()))
-                return v;
-        }
-        
-        return null;
-    }
- 
     public static Vendedor searchByID(int id){
         ArrayList<Vendedor> vendedores = Vendedor.readFile("Vendedor.txt");
         for (Vendedor v: vendedores){
@@ -162,7 +153,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
         System.out.println("Ingrese la placa: ");
         String placa= sc.nextLine();
                     
-        Vehiculo v= this.filtrarPorPlaca(placa);
+        Vehiculo v= Utilitaria.filtrarPorPlaca(placa);
         System.out.println(""+v.getMarca()+" "+v.getModelo()+" Precio: "+v.getPrecio());
         int tamaño= v.getOfertas().size();
         int seleccion;

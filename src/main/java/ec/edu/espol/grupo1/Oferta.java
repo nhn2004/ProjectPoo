@@ -21,19 +21,21 @@ public class Oferta {
     private Vehiculo vehiculo;
     private Comprador comprador;
     private int idComprador;
+    private String placa;
 
     public Oferta(){
 
     }
     
-    public Oferta(int id,double p,int idC){
+    public Oferta(int id,double p,int idC, String placa){
         this.id=id;
         this.precio=p;
         this.idComprador=idC;
+        this.placa = placa;
     }
     
-    public void registrarOferta(int idOferta, double p,Vehiculo v, int idComprador){
-      Oferta oferta = new Oferta(idOferta, p, idComprador);
+    public void registrarOferta(int idOferta, double p,Vehiculo v, int idComprador, String placa){
+      Oferta oferta = new Oferta(idOferta, p, idComprador, placa);
       ArrayList<Comprador> compradores = Comprador.readFile("Comprador.txt");
       this.comprador = Comprador.searchByID(compradores, idComprador);
       oferta.saveFile("Oferta.txt");
@@ -67,6 +69,27 @@ public class Oferta {
     public Comprador getComprador() {
         return comprador;
     }
+
+    public void setComprador(Comprador comprador) {
+        this.comprador = comprador;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+    
     
     public static ArrayList<Oferta> readFile(String nombreArchivo){
         ArrayList<Oferta> lO= new ArrayList<>();
@@ -74,7 +97,7 @@ public class Oferta {
           while(sc.hasNextLine()){
             String linea= sc.nextLine();
             String[] el=linea.split("\\|");
-            Oferta oferta= new Oferta(Integer.parseInt(el[0]),Double.parseDouble(el[1]),Integer.parseInt(el[2]));
+            Oferta oferta= new Oferta(Integer.parseInt(el[0]),Double.parseDouble(el[1]),Integer.parseInt(el[2]), el[3]);
             lO.add(oferta);
           }
         }
@@ -90,6 +113,17 @@ public class Oferta {
         } 
         catch(Exception e){
           System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void link(ArrayList<Comprador> compradores, ArrayList<Oferta> ofertas, ArrayList<Vehiculo> vehiculos){
+        for(Oferta o: ofertas){
+            Comprador c = Comprador.searchByID(compradores, o.getIdComprador());
+            Vehiculo v = Utilitaria.filtrarPorPlaca(o.getPlaca());
+            c.setOferta(o);
+            v.getOfertas().add(o);
+            o.setComprador(c);
+            o.setVehiculo(v);
         }
     }
 }

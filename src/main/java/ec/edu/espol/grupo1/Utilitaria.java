@@ -205,6 +205,14 @@ class Utilitaria {
         return elementos[0];
     }
     
+    public static Vehiculo filtrarPorPlaca(String placa){
+        for (Vehiculo v: this.vehiculos){
+            if(placa.equals(v.getPlaca()))
+                return v;
+        }  
+        return null;
+    }
+    
     public static Vehiculo navegar(ArrayList<Vehiculo> vehiculos){
         int tamaño= vehiculos.size();
         Scanner sc= new Scanner(System.in);
