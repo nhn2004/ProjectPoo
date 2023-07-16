@@ -5,8 +5,6 @@
 package ec.edu.espol.demo;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,7 +20,30 @@ public class Comprador extends Usuario{
             String correoElectronico, String clave) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
     }
+    
 
+     public static void registroNuevo(String nomArchivo){
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Ingrese correo electrónico: ");
+        String cE= sc.nextLine();
+        System.out.println("Ingrese clave: ");
+        String key= sc.nextLine();
+        System.out.println("Ingrese nombres: ");
+        String nom= sc.nextLine();
+        System.out.println("Ingrese apellidos: ");
+        String apellido= sc.nextLine();
+        System.out.println("Ingrese organización: ");
+        String org= sc.nextLine();
+        int i= Utilitaria.nextId(nomArchivo);
+        if (Comprador.buscarClave(nomArchivo, cE).equals("")){
+        Comprador v= new Comprador(i,nom,apellido,org,cE,key);
+        v.saveFile(nomArchivo);
+         } else{
+                System.out.println("Ese correo ya existe no se puede registar");
+        } 
+        }
+    
     public Oferta getOferta() {
         return oferta;
     }

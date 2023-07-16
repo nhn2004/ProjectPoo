@@ -16,14 +16,41 @@ public class Vendedor extends Usuario{
     public ArrayList<Vehiculo> getVehiculos() {
         return vehiculos;
     }
-
+    
+    public Vendedor(){
+        
+    }
     public Vendedor(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
         this.vehiculos=  Vendedor.searchByIDS(id);
     }
     
+    
+     public static void registroNuevo(String nomArchivo){
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Ingrese correo electrónico: ");
+        String cE= sc.nextLine();
+        System.out.println("Ingrese clave: ");
+        String key= sc.nextLine();
+        System.out.println("Ingrese nombres: ");
+        String nom= sc.nextLine();
+        System.out.println("Ingrese apellidos: ");
+        String apellido= sc.nextLine();
+        System.out.println("Ingrese organización: ");
+        String org= sc.nextLine();
+        int i= Utilitaria.nextId(nomArchivo);
+        if (Vendedor.buscarClave(nomArchivo, cE).equals("")){
+        Vendedor v= new Vendedor(i,nom,apellido,org,cE,key);
+        v.saveFile(nomArchivo);
+         } else{
+                System.out.println("Ese correo ya existe no se puede registar");
+        } 
+        }
+
+    
     public static ArrayList<Vehiculo> searchByIDS(int idVendedor){ //IDS= ID SELLER==ID VENDEDOR
-        ArrayList<Vehiculo> veh = Vehiculo.readFile("vehiculo.txt");
+        ArrayList<Vehiculo> veh = Vehiculo.readFile("Vehiculo.txt");
         ArrayList<Vehiculo> nuevaL= new ArrayList<>();  
         for (Vehiculo v: veh){
             if (v.getIdVendedor() == idVendedor)

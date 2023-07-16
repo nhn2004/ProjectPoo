@@ -21,7 +21,10 @@ public class Usuario implements Saveable {
     private String organizacion;
     private String correoElectronico;
     private String clave;
-
+    
+    public Usuario(){
+        
+    }
     public Usuario(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         this.id = id;
         this.nombre = nombre;
@@ -90,40 +93,5 @@ public class Usuario implements Saveable {
           System.out.println(e.getMessage());
         }
     }
-    
-    
-    public void registroNuevo(String nomArchivo){
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.println("Ingrese correo electrónico: ");
-        String cE= sc.nextLine();
-        System.out.println("Ingrese clave: ");
-        String key= sc.nextLine();
-        System.out.println("Ingrese nombres: ");
-        String nom= sc.nextLine();
-        System.out.println("Ingrese apellidos: ");
-        String apellido= sc.nextLine();
-        System.out.println("Ingrese organización: ");
-        String org= sc.nextLine();
-        int i= Utilitaria.nextId(nomArchivo);
-        if (this instanceof Vendedor){
-            if (Vendedor.buscarClave(nomArchivo, cE).equals("")){
-               Vendedor v= new Vendedor(i,nom,apellido,org,cE,key);
-               v.saveFile(nomArchivo);
-            }
-            else
-                System.out.println("Ese correo ya existe no se puede registar");
-        }
-        else if(this instanceof Comprador){
-            if(Comprador.buscarClave(nomArchivo, cE).equals("")){
-                Comprador c = new Comprador(i, nom, apellido, org, cE, key);
-                c.saveFile(nomArchivo);
-            }
-            else
-                System.out.println("Ese correo ya existe no se puede registar");
-        }
-    }
-    
-    
-    
+  
 }

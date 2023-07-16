@@ -11,6 +11,13 @@ package ec.edu.espol.demo;
 public class Demo {
 
     public static void main(String[] args) {
-        System.out.println("Hello");
+        
+        for (int i=0;i<2;i++){
+            Vendedor.registroNuevo("Vendedor.txt");
+        }
+        for (int i=0;i<2;i++){
+            Comprador.registroNuevo("Comprador.txt");
+        }
+        
     }
 }
