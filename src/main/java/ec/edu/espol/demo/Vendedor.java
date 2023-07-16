@@ -1,5 +1,5 @@
 
-package ec.edu.espol.grupo1;
+package ec.edu.espol.demo;
 
 /**
  *
