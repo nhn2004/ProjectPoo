@@ -63,7 +63,7 @@ public class Camioneta extends Vehiculo {
           System.out.println(e.getMessage());
         }
     }
-    
+
     public static ArrayList<Camioneta> readFile(String nombreArchivo){
         ArrayList<Camioneta> lC= new ArrayList<>();
         try(Scanner sc= new Scanner(new File(nombreArchivo))){
