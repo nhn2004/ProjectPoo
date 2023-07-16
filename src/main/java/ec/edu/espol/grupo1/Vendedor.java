@@ -18,9 +18,7 @@ public class Vendedor extends Usuario{
         return vehiculos;
     }
 
-    public void setVehiculos(ArrayList<Vehiculo> vehiculos) {
-        this.vehiculos = vehiculos;
-    }
+
 
     public Vendedor(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
@@ -110,8 +108,9 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
            String transmision = sc.nextLine();
            Camioneta c= new Camioneta(placa, modelo, marca,
                    tipoMotor, año, recorrido, color, tipoCombustible,
-                   precio,traccion, vidrios, transmision);
+                   precio,super.getId(),traccion, vidrios, transmision);
            c.saveFile(nombreArchivo);
+           this.vehiculos.add(c);
               }
        case "auto" -> {
            System.out.print("Ingrese los vidrios: ");
@@ -120,22 +119,30 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
            String transm = sc.nextLine();
            Auto a= new Auto(placa, modelo, marca,
                    tipoMotor, año, recorrido, color,
-                   tipoCombustible, precio,vid, transm);
+                   tipoCombustible, precio,super.getId(),vid, transm);
            a.saveFile(nombreArchivo);
+           this.vehiculos.add(a);
               }
        case "moto" -> {
-           Vehiculo m= new Vehiculo(placa, modelo, marca, tipoMotor, año, recorrido, color, tipoCombustible, precio);
+           Vehiculo m= new Vehiculo(placa, modelo, marca, tipoMotor, año, recorrido, color, tipoCombustible, precio,super.getId());
            m.saveFile(nombreArchivo);
+           this.vehiculos.add(m);
               }
-       default -> {
-           Vehiculo d= new Vehiculo(placa, modelo, marca, tipoMotor, año, recorrido, color, tipoCombustible, precio);
-           d.saveFile(nombreArchivo);
-              }
+       
      }
 
    }
     }
  }
+ 
+    public static Vendedor searchByID(ArrayList<Vendedor> vendedores, int id){
+        for (Vendedor v: vendedores){
+            if (v.getId() == id)
+                return v;
+            
+        }
+        return null;
+    }
  
  public void aceptarOferta(String cE,String clave){
     Scanner sc= new Scanner(System.in);

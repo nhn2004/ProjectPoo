@@ -9,7 +9,6 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.Scanner;
@@ -178,6 +177,7 @@ class Utilitaria {
         ArrayList<Object> o = new ArrayList<>();
         return o;
     }
+    
     
     public static void enviarCorreo(String correoDestino, String asunto, String mensaje){
         String correoEnvio = "nhncevallos@gmail.com";

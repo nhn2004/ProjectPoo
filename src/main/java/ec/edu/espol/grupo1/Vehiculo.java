@@ -23,6 +23,7 @@ public class Vehiculo implements Saveable {
     private String color;
     private String tipoCosmbustible;
     private double precio;
+    private int idVendedor;
     private Vendedor vendedor;
     ArrayList<Oferta> ofertas;
     
@@ -30,7 +31,7 @@ public class Vehiculo implements Saveable {
         
     }
 
-    public Vehiculo(String placa, String modelo, String marca, String tipoMotor, int año, double recorrido, String color, String tipoCosmbustible, double precio) {
+    public Vehiculo(String placa, String modelo, String marca, String tipoMotor, int año, double recorrido, String color, String tipoCosmbustible, double precio, int idVendedor) {
         this.placa = placa;
         this.modelo = modelo;
         this.marca = marca;
@@ -40,7 +41,10 @@ public class Vehiculo implements Saveable {
         this.color = color;
         this.tipoCosmbustible = tipoCosmbustible;
         this.precio = precio;
+        this.idVendedor=idVendedor;
         this.ofertas = new ArrayList<>();
+        ArrayList<Vendedor> vendedores = Vendedor.readFile("Vendedor.txt");
+        this.vendedor= Vendedor.searchByID(vendedores, idVendedor);
     }
 
     public String getPlaca() {
