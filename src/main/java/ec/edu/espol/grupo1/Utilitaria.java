@@ -4,7 +4,14 @@
  */
 package ec.edu.espol.grupo1;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -64,6 +71,8 @@ class Utilitaria {
           String hash2= Utilitaria.generarHash(claveIngresada);
           return Objects.equals(hash1,hash2);
       }
+      
+    
             
     public static ArrayList<Vehiculo> filtrarVehiculos(String tipovehiculo, double recorridoInicio, float recorridoFin, 
             int añoInicio, long añoFin, double precioInicio, float precioFin){
@@ -160,9 +169,36 @@ class Utilitaria {
         
       }
     
-    public static Vehiculo filtrarPorPlaca(ArrayList<Vehiculo> vehiculos, String placa){
-        Vehiculo v = new Vehiculo();
-        return v;
+   
+    
+    public static void eliminarVehiculo(String archivo, String placa) {
+        File inputFile = new File(archivo);
+        File tempFile = new File("temp.txt");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+
+            String lineaActual;
+
+            while ((lineaActual = reader.readLine()) != null) {
+                String lineaPlaca = Utilitaria.obtenerPlaca(lineaActual);
+                if (!(lineaPlaca.equals(placa))) {
+                    writer.write(lineaActual);
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            
+        }
+        
+        inputFile.delete();
+        tempFile.renameTo(inputFile);
+        
+    }
+    
+    public static String obtenerPlaca(String linea) {
+        String[] elementos =linea.split("\\|");
+        return elementos[0];
     }
     
     public static Vehiculo navegar(ArrayList<Vehiculo> vehiculos){

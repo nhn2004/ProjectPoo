@@ -134,8 +134,17 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
    }
     }
  }
+     public Vehiculo filtrarPorPlaca(String placa){
+        for (Vehiculo v: this.vehiculos){
+            if(placa.equals(v.getPlaca()))
+                return v;
+        }
+        
+        return null;
+    }
  
-    public static Vendedor searchByID(ArrayList<Vendedor> vendedores, int id){
+    public static Vendedor searchByID(int id){
+        ArrayList<Vendedor> vendedores = Vendedor.readFile("Vendedor.txt");
         for (Vendedor v: vendedores){
             if (v.getId() == id)
                 return v;
@@ -156,7 +165,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
         System.out.println("Ingrese la placa: ");
         String placa= sc.nextLine();
                     
-        Vehiculo v= Utilitaria.filtrarPorPlaca(vehiculos,placa);
+        Vehiculo v= this.filtrarPorPlaca(placa);
         System.out.println(""+v.getMarca()+" "+v.getModelo()+" Precio: "+v.getPrecio());
         int tamaño= v.getOfertas().size();
         int seleccion;
@@ -195,7 +204,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
                         String mensaje= "Hola, es un placer hacer negocios contigo, mi "+v.getMarca()+" "+v.getModelo()+" pronto sera tuyo, responde a este correo para hablar";
                         String asunto= ""+v.getVendedor().getNombre()+" acepto tu oferta!!!";
                         Utilitaria.enviarCorreo(oferta.getComprador().getCorreoElectronico(), asunto, mensaje);
-                        // solo falta elimina el auto del sistema
+                        Utilitaria.eliminarVehiculo("Vehiculo.txt", placa);
                     }
 
                     case 3 -> {

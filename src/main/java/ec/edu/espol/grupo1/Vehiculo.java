@@ -43,9 +43,8 @@ public class Vehiculo implements Saveable {
         this.tipoCosmbustible = tipoCosmbustible;
         this.precio = precio;
         this.idVendedor=idVendedor;
-        this.ofertas = new ArrayList<>();
-        ArrayList<Vendedor> vendedores = Vendedor.readFile("Vendedor.txt");
-        this.vendedor= Vendedor.searchByID(vendedores, idVendedor);
+        this.ofertas = new ArrayList<>(); 
+        this.vendedor= Vendedor.searchByID( idVendedor);
     }
 
     public String getPlaca() {
