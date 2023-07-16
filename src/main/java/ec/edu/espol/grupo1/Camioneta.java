@@ -64,8 +64,8 @@ public class Camioneta extends Vehiculo {
         }
     }
 
-    public static ArrayList<Camioneta> readFile(String nombreArchivo){
-        ArrayList<Camioneta> lC= new ArrayList<>();
+    public static ArrayList<Vehiculo> readFile(String nombreArchivo){
+        ArrayList<Vehiculo> lC= new ArrayList<>();
         try(Scanner sc= new Scanner(new File(nombreArchivo))){
           while(sc.hasNextLine()){
             String linea= sc.nextLine();

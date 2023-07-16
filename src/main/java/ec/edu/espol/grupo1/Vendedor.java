@@ -153,7 +153,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
         System.out.println("Ingrese la placa: ");
         String placa= sc.nextLine();
                     
-        Vehiculo v= Utilitaria.filtrarPorPlaca(placa);
+        Vehiculo v= Utilitaria.filtrarPorPlaca(placa,vehiculos);
         System.out.println(""+v.getMarca()+" "+v.getModelo()+" Precio: "+v.getPrecio());
         int tamaño= v.getOfertas().size();
         int seleccion;

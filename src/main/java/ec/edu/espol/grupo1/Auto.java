@@ -56,8 +56,8 @@ public class Auto extends Vehiculo {
         }
     }
     
-        public static ArrayList<Auto> readFile(String nombreArchivo){
-        ArrayList<Auto> lA= new ArrayList<>();
+        public static ArrayList<Vehiculo> readFile(String nombreArchivo){
+        ArrayList<Vehiculo> lA= new ArrayList<>();
         try(Scanner sc= new Scanner(new File(nombreArchivo))){
           while(sc.hasNextLine()){
             String linea= sc.nextLine();

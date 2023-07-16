@@ -86,6 +86,7 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     double monto = sc.nextDouble();
     int idOffer = Utilitaria.nextId("Oferta.txt");
     
+    
     }
   
 }

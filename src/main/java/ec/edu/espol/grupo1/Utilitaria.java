@@ -74,7 +74,7 @@ class Utilitaria {
       }
       
     
-            
+    
     public static ArrayList<Vehiculo> filtrarVehiculos(String tipovehiculo, double recorridoInicio, float recorridoFin, 
             int añoInicio, long añoFin, double precioInicio, float precioFin){
         
@@ -206,8 +206,8 @@ class Utilitaria {
         return elementos[0];
     }
     
-    public static Vehiculo filtrarPorPlaca(String placa){
-        for (Vehiculo v: this.vehiculos){
+    public static Vehiculo filtrarPorPlaca(String placa,ArrayList<Vehiculo> vehiculos){
+        for (Vehiculo v: vehiculos){
             if(placa.equals(v.getPlaca()))
                 return v;
         }  

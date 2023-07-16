@@ -119,7 +119,7 @@ public class Oferta {
     public static void link(ArrayList<Comprador> compradores, ArrayList<Oferta> ofertas, ArrayList<Vehiculo> vehiculos){
         for(Oferta o: ofertas){
             Comprador c = Comprador.searchByID(compradores, o.getIdComprador());
-            Vehiculo v = Utilitaria.filtrarPorPlaca(o.getPlaca());
+            Vehiculo v = Utilitaria.filtrarPorPlaca(o.getPlaca(),Vehiculo.readFile("vendedores.txt"));
             c.setOferta(o);
             v.getOfertas().add(o);
             o.setComprador(c);
