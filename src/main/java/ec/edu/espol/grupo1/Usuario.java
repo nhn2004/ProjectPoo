@@ -7,7 +7,6 @@ package ec.edu.espol.grupo1;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -94,72 +93,28 @@ public class Usuario implements Saveable {
         }
     }
     
-    
-
-/*
-    public static ArrayList<Usuario> readFile(String nombreArchivo){
-        ArrayList<Usuario> users= new ArrayList<>();
-        try(Scanner sc= new Scanner(new File(nombreArchivo))){
-          while(sc.hasNextLine()){
-            String linea= sc.nextLine();
-            String[] el=linea.split("\\|");
-            if (el.length == 7 && nombreArchivo.equals("compradores.txt")){
-                Usuario comprador= new Comprador(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5],el[6]);    
-                users.add(comprador);
-            }
-            else if (el.length == 6 && nombreArchivo.equals("vendedores.txt")){
-                Usuario vendedor = new Vendedor(Integer.parseInt(el[0]),el[1],el[2],el[3],el[4],el[5]);
-                users.add(vendedor);
-            }
-          }
-        }
-        catch(Exception e){
-          System.out.println(e.getMessage());
-        }
-        return users;
-    }//no seguro si funciona, esta aqui porsi
-
-    
-    public static String buscarClave(String nombreArchivo,String correoElectronico){
-        ArrayList<Usuario> users = Usuario.readFile(nombreArchivo);
-        String clave= "";
-        for (Usuario user: users){
-            if (user instanceof Comprador){
-                Comprador c = (Comprador) user;
-                if (c.getCorreoElectronico().equals(correoElectronico))
-                    clave=c.getClave();
-            }
-            else if (user instanceof Vendedor){
-                Vendedor v = (Vendedor) user;
-                if (v.getCorreoElectronico().equals(correoElectronico))
-                    clave=v.getClave();
-            }
-        }
-    return clave;
-    }//tampoco seguro si funciona, ahi esta porsi
-*/
     public void registroNuevo(String nomArchivo){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese su rol: ");
         String tipoUsuario = sc.nextLine();
         System.out.println("Ingrese nombres: ");
-        String nombre= sc.nextLine();
+        String nom= sc.nextLine();
         System.out.println("Ingrese apellidos: ");
         String apellido= sc.nextLine();
         System.out.println("Ingrese organización: ");
-        String organizacion= sc.nextLine();
+        String org= sc.nextLine();
         System.out.println("Ingrese correo electrónico: ");
         String cE= sc.nextLine();
         System.out.println("Ingrese clave: ");
-        String clave= sc.nextLine();
+        String key= sc.nextLine();
         int i= Utilitaria.nextId(nomArchivo);
         if (tipoUsuario.toLowerCase().equals("vendedor")){
-               Vendedor v= new Vendedor(i,nombre,apellido,organizacion,cE,clave);
+               Vendedor v= new Vendedor(i,nom,apellido,org,cE,key);
                v.saveFile(nomArchivo);
         }
         else if(tipoUsuario.toLowerCase().equals("comprador")){
             
-            Comprador c = new Comprador(i, nombre, apellido, organizacion, cE, clave);
+            Comprador c = new Comprador(i, nom, apellido, org, cE, key);
             c.saveFile(nomArchivo);
         }
     }

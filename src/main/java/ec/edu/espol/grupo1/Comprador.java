@@ -90,23 +90,4 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     oferta1.saveFile("Oferta.txt");
     }
   
-  /*
-  public void registrarNuevoComprador(Scanner sc,String nombreArchivo){
-   System.out.println("Ingrese nombres: ");
-   String n= sc.nextLine();
-   System.out.println("Ingrese apellidos: ");
-   String a= sc.nextLine();
-   System.out.println("Ingrese organización: ");
-   String o= sc.nextLine();
-   System.out.println("Ingrese correo electrónico: ");
-   String cE= sc.nextLine();
-   System.out.println("Ingrese correo:");
-   String co = sc.nextLine();
-   System.out.println("Ingrese clave: ");
-   String clav= sc.nextLine();
-   int i= Utilitaria.nextId(nombreArchivo);
-   Comprador c= new Comprador(i,n,a,o,cE,clav,co);
-   c.saveFile(nombreArchivo);
- }
-  */
 }

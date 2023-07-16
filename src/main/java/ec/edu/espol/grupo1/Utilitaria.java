@@ -8,6 +8,7 @@ import java.io.File;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Properties;
@@ -43,9 +44,9 @@ class Utilitaria {
             s.insert(0, '0');
         }
         return s.toString();
-        } catch(Exception e){
+        } catch (NoSuchAlgorithmException e){
             return "//ERROR";
-        } 
+        }
    }
       public static String buscarClave(String nombreArchivo,String correoElectronico){
             ArrayList<Vendedor> lV= Vendedor.readFile(nombreArchivo);

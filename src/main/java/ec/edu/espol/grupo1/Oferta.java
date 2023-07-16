@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author HP
  */
 public class Oferta {
-    private int idOferta;
+    private int id;
     private double precio;
     private Vehiculo vehiculo;
     private Comprador comprador;
@@ -24,7 +24,7 @@ public class Oferta {
 
     }
     public Oferta(int idOferta, double p,Vehiculo v, int idComprador){
-      this.idOferta = idOferta;
+      this.id = idOferta;
       precio=p;
       vehiculo=v;
       this.idComprador = idComprador;
