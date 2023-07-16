@@ -77,17 +77,17 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     }
 
   public void ofertaPorVehiculo(ArrayList<Vehiculo> vehiculos, String tipovehiculo, 
-          double recorridoInicio, double recorridoFin, int añoInicio, int añoFin, double precioInicio, 
-          double precioFin){
-    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos, tipovehiculo, 
+          float recorridoInicio, float recorridoFin, int añoInicio, int añoFin, float precioInicio, 
+          float precioFin){
+    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos( tipovehiculo, 
             recorridoInicio, recorridoFin, añoInicio, añoFin, precioInicio, precioFin);
     Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
     Scanner sc = new Scanner(System.in);
     System.out.println("Ingrese la oferta por el vehiculo elegido: ");
     double monto = sc.nextDouble();
     int idOffer = Utilitaria.nextId("Oferta.txt");
-    Oferta oferta = new Oferta(idOffer ,monto, vehiculoSeleccionado, super.getId());
-    oferta.saveFile("Oferta.txt");
+    Oferta oferta1 = new Oferta(idOffer ,monto, vehiculoSeleccionado, super.getId());
+    oferta1.saveFile("Oferta.txt");
     }
   
   /*

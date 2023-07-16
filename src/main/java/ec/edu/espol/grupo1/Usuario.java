@@ -143,24 +143,23 @@ public class Usuario implements Saveable {
         System.out.println("Ingrese su rol: ");
         String tipoUsuario = sc.nextLine();
         System.out.println("Ingrese nombres: ");
-        String n= sc.nextLine();
+        String nombre= sc.nextLine();
         System.out.println("Ingrese apellidos: ");
-        String a= sc.nextLine();
+        String apellido= sc.nextLine();
         System.out.println("Ingrese organización: ");
-        String o= sc.nextLine();
+        String organizacion= sc.nextLine();
         System.out.println("Ingrese correo electrónico: ");
         String cE= sc.nextLine();
         System.out.println("Ingrese clave: ");
-        String clav= sc.nextLine();
+        String clave= sc.nextLine();
         int i= Utilitaria.nextId(nomArchivo);
         if (tipoUsuario.toLowerCase().equals("vendedor")){
-               Vendedor v= new Vendedor(i,n,a,o,cE,clav);
+               Vendedor v= new Vendedor(i,nombre,apellido,organizacion,cE,clave);
                v.saveFile(nomArchivo);
         }
         else if(tipoUsuario.toLowerCase().equals("comprador")){
-            System.out.println("Ingrese un correo");
-            String co = sc.nextLine();
-            Comprador c = new Comprador(i, n, a, o, cE, clav, co);
+            
+            Comprador c = new Comprador(i, nombre, apellido, organizacion, cE, clave);
             c.saveFile(nomArchivo);
         }
     }
