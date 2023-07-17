@@ -123,7 +123,7 @@ public class Vehiculo implements Saveable {
             pw.println(this.lineFile());  
         } 
         catch(Exception e){
-          System.out.println(e.getMessage());
+          System.out.println(e.getMessage()+"saveFileVehiculo");
         }
     }
     

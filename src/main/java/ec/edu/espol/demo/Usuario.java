@@ -90,7 +90,7 @@ public class Usuario implements Saveable {
             pw.println(toString());  
         } 
         catch(Exception e){
-          System.out.println(e.getMessage());
+          System.out.println(e.getMessage()+"savefileUsuario");
         }
     }
   
