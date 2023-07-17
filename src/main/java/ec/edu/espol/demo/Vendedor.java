@@ -7,7 +7,7 @@ package ec.edu.espol.demo;
  */
 
 import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,9 +23,9 @@ public class Vendedor extends Usuario{
     }
     public Vendedor(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
-        try{this.vehiculos= Vendedor.searchByIDS(id);}
-        catch(Exception e){
-        this.vehiculos= new ArrayList<>();}
+        this.vehiculos= new ArrayList<>();
+//        try{this.vehiculos= Vendedor.searchByIDS(id);}
+//        catch(Exception e){}
     }
     
     
@@ -55,6 +55,7 @@ public class Vendedor extends Usuario{
     
     public static ArrayList<Vehiculo> searchByIDS(int idVendedor){ //IDS= ID SELLER==ID VENDEDOR
         ArrayList<Vehiculo> veh = Vehiculo.readFile();
+        System.out.println(veh.get(0));
         ArrayList<Vehiculo> nuevaL= new ArrayList<>();  
         for (Vehiculo v: veh){
             if (v.getIdVendedor() == idVendedor)

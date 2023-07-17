@@ -111,7 +111,7 @@ public class Vehiculo implements Saveable {
                 + "Año = "+this.año+",\n"
                 + "Recorrido = "+this.recorrido+",\n"
                 + "Color = "+this.color+",\n"
-                + "Tipo de combustible = "+this.tipoCosmbustible+",\nn"
+                + "Tipo de combustible = "+this.tipoCosmbustible+",\n"
                 + "Precio = "+this.precio;
     }
     
