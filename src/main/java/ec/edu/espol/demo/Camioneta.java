@@ -51,7 +51,7 @@ public class Camioneta extends Vehiculo {
     
     @Override
     public String lineFile(){
-        return super.lineFile()+this.vidrios+"|"+this.transmision+this.traccion;
+        return super.lineFile()+"|"+this.vidrios+"|"+this.transmision+this.traccion;
     }
     
     @Override

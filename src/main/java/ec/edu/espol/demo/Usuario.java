@@ -6,6 +6,7 @@ package ec.edu.espol.demo;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -89,7 +90,7 @@ public class Usuario implements Saveable {
         try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
             pw.println(toString());  
         } 
-        catch(Exception e){
+        catch(IOException e){
           System.out.println(e.getMessage());
         }
     }

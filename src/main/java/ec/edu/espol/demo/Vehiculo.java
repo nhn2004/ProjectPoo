@@ -6,8 +6,11 @@ package ec.edu.espol.demo;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -100,16 +103,16 @@ public class Vehiculo implements Saveable {
 
     @Override
     public String toString(){
-        return "Este vehículo tiene:/n"
-                + "Placa = "+this.placa+",/n"
-                + "Marca = "+this.marca+",/n"
-                + "Modelo = "+this.modelo+",/n"
-                + "Tipo de motor = "+this.tipoMotor+",/n"
-                + "Año = "+this.año+",/n"
-                + "Recorrido = "+this.recorrido+",/n"
-                + "Color = "+this.color+",/n"
-                + "Tipo de combustible = "+this.tipoCosmbustible+",/n"
-                + "Precio = "+this.precio+",/n";
+        return "Este vehículo tiene:\n"
+                + "Placa = "+this.placa+",\n"
+                + "Marca = "+this.marca+",\n"
+                + "Modelo = "+this.modelo+",\n"
+                + "Tipo de motor = "+this.tipoMotor+",\n"
+                + "Año = "+this.año+",\n"
+                + "Recorrido = "+this.recorrido+",\n"
+                + "Color = "+this.color+",\n"
+                + "Tipo de combustible = "+this.tipoCosmbustible+",\nn"
+                + "Precio = "+this.precio;
     }
     
     public String lineFile(){
@@ -127,20 +130,43 @@ public class Vehiculo implements Saveable {
         }
     }
     
-    public static ArrayList<Vehiculo> readFile(String nombreArchivo){
+    public static ArrayList<Vehiculo> readFile(){
         ArrayList<Vehiculo> lV= new ArrayList<>();
-        try(Scanner sc= new Scanner(new File(nombreArchivo))){
+        try(Scanner sc= new Scanner(new File("Vehiculos.txt"))){
           while(sc.hasNextLine()){
             String linea= sc.nextLine();
             String[] el=linea.split("\\|");
-            Vehiculo vehiculo= new Vehiculo(el[0],el[1],el[2],el[3],Integer.parseInt(el[4]),
-                    Double.parseDouble(el[5]),el[6],el[7],
-                    Double.parseDouble(el[8]),Integer.parseInt(el[9]));    
-            lV.add(vehiculo);
+            List<String> unido = Arrays.asList(el);
+              switch (unido.size()) {
+                  case 12 -> {
+                      Auto auto= new Auto(el[0],el[1],el[2],el[3],Integer.parseInt(el[4]),
+                              Double.parseDouble(el[5]),el[6],el[7],
+                              Double.parseDouble(el[8]),Integer.parseInt(el[9]),el[10],el[11]);
+                      lV.add(auto);
+                      
+                  }
+                  case 13 -> {
+                      Camioneta camioneta= new Camioneta(el[0],el[1],el[2],el[3],Integer.parseInt(el[4]),
+                              Double.parseDouble(el[5]),el[6],el[7],
+                              Double.parseDouble(el[8]),Integer.parseInt(el[9]),el[10],el[11],el[12]);
+                      lV.add(camioneta);
+                      
+                  }
+                  default -> {
+                      Vehiculo vehiculo= new Vehiculo(el[0],el[1],el[2],el[3],Integer.parseInt(el[4]),
+                              Double.parseDouble(el[5]),el[6],el[7],
+                              Double.parseDouble(el[8]),Integer.parseInt(el[9]));
+                      lV.add(vehiculo);
+                  }
+                      
+              }
           }
         }
         catch(Exception e){
-          System.out.println(e.getMessage());
+          try{File archivo = new File("Vehiculos.txt");
+          archivo.createNewFile();
+          }
+          catch(IOException a){}
         }
         return lV;
     }

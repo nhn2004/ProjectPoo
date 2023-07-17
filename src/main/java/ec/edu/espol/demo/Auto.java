@@ -36,14 +36,14 @@ public class Auto extends Vehiculo {
     
     @Override
     public String toString(){
-        return super.toString()+",/n"
-                + "Vidrios = "+this.vidrios+",/n"
+        return super.toString()+",\n"
+                + "Vidrios = "+this.vidrios+",\n"
                 + "Transmisión = "+this.transmision;
     }
     
     @Override
     public String lineFile(){
-        return super.lineFile()+this.vidrios+"|"+this.transmision;
+        return super.lineFile()+"|"+this.vidrios+"|"+this.transmision;
     }
     
     @Override
