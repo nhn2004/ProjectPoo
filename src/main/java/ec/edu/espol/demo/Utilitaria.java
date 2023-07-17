@@ -118,43 +118,6 @@ class Utilitaria {
             
           }
     
-    
-    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, float recorridoFin, 
-        int añoInicio, long añoFin, double precioInicio){
-        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos(vehiculos,tipovehiculo,  recorridoInicio,  recorridoFin, añoInicio,  añoFin,  precioInicio, 1000000000000.0f);
-        return vehFiltrados;
-    }
-    
-    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, float recorridoFin, 
-            int añoInicio, long añoFin, float precioFin){
-        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos( vehiculos,tipovehiculo,  recorridoInicio,  recorridoFin, añoInicio,  añoFin,  0.0 , precioFin);
-        return vehFiltrados;
-    }
-    
-    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, float recorridoFin, 
-            int añoInicio, double precioInicio, float precioFin){
-        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos(vehiculos,tipovehiculo,  recorridoInicio,  recorridoFin, añoInicio, 1000000000, precioInicio, precioFin);
-        return vehFiltrados;
-    }
-    
-    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, float recorridoFin, 
-            long añoFin, double precioInicio, float precioFin){
-        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos(vehiculos,tipovehiculo,  recorridoInicio,  recorridoFin, 0, añoFin, precioInicio, precioFin);
-        return vehFiltrados;
-    }
-    
-    public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, double recorridoInicio, int añoInicio, long añoFin, 
-            double precioInicio, float precioFin){
-        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos( vehiculos,tipovehiculo,  recorridoInicio, 1000000000000.0f , añoInicio, añoFin, precioInicio, precioFin);
-        return vehFiltrados;
-    }
-    
-     public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos,String tipovehiculo, float recorridoFin, int añoInicio, long añoFin, 
-             double precioInicio, float precioFin){
-        ArrayList<Vehiculo> vehFiltrados = filtrarVehiculos(vehiculos,tipovehiculo,  0.0, recorridoFin , añoInicio, añoFin, precioInicio, precioFin);
-        return vehFiltrados;
-     }
-     
       public static ArrayList<Vehiculo> filtrarVehiculos( ArrayList<Vehiculo> vehiculos,double recorridoInicio, float recorridoFin, 
             int añoInicio, long añoFin, double precioInicio, float precioFin){
         ArrayList<Vehiculo> vehFiltrados = new ArrayList<>();
@@ -217,7 +180,8 @@ class Utilitaria {
         int seleccion;
         int i=0;
         Vehiculo v;
-        do{
+        if (tamaño != 0){
+            do{
             v = vehiculos.get(i);  
             System.out.println(v.toString());
             if (tamaño>=0 && i==0){
@@ -234,7 +198,7 @@ class Utilitaria {
               System.out.println("3.- Anterior");
             }
             seleccion= sc.nextInt();
-            sc.nextInt();
+            sc.nextLine();
             
             switch (seleccion) {
                 case 1 -> {
@@ -261,6 +225,7 @@ class Utilitaria {
             }      
 
         }while (seleccion != 2);
+        }
         return null;
     }
     

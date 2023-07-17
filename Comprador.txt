@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-1|Nahin|Cevallos|espol|nnhn2003@epsol.edu.ec|kdjf8
-2|lkdjf|ldkfj|dkfj|ldkfj|ldkjf
-=======
 1|Kenneth|Echeverria|Espol|kjecheve@espol.edu.ec|kenne
 2|Joel|Chaverria|Espol|echeverriakj2004@gmail.com|kennecito
->>>>>>> 2c344684d4750b621862aaa96b4367a84a2159e5
+

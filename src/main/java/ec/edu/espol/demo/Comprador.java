@@ -88,15 +88,95 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
     }
 
   public void ofertaPorVehiculo(String tipovehiculo, 
-          float recorridoInicio, float recorridoFin, int añoInicio, int añoFin, float precioInicio, 
-          float precioFin){
+          double recorridoInicio, float recorridoFin, int añoInicio, long añoFin, double precioInicio, float precioFin){
     ArrayList<Vehiculo> vehiculos = Vehiculo.readFile();
-    
     ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos,tipovehiculo, 
             recorridoInicio, recorridoFin, añoInicio, añoFin, precioInicio, precioFin);
-      
     Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
-    System.out.println("caca");
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Ingrese la oferta por el vehiculo elegido: ");
+    double monto = sc.nextDouble();
+    int idOffer = Utilitaria.nextId("Oferta.txt");
+    Utilitaria.registrarOferta(idOffer, monto, vehiculoSeleccionado, this.getId(),vehiculoSeleccionado.getPlaca());
+    }
+  public void ofertaPorVehiculo(String tipovehiculo, 
+          double recorridoInicio, float recorridoFin, int añoInicio, long añoFin, double precioInicio){
+    ArrayList<Vehiculo> vehiculos = Vehiculo.readFile();
+    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos,tipovehiculo, 
+            recorridoInicio, recorridoFin, añoInicio, añoFin, precioInicio, 100000000.0f);
+    Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Ingrese la oferta por el vehiculo elegido: ");
+    double monto = sc.nextDouble();
+    int idOffer = Utilitaria.nextId("Oferta.txt");
+    Utilitaria.registrarOferta(idOffer, monto, vehiculoSeleccionado, this.getId(),vehiculoSeleccionado.getPlaca());
+  }
+  public void ofertaPorVehiculo(String tipovehiculo, 
+          double recorridoInicio, float recorridoFin, int añoInicio, long añoFin, float precioFin){
+    ArrayList<Vehiculo> vehiculos = Vehiculo.readFile();
+    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos,tipovehiculo, 
+            recorridoInicio, recorridoFin, añoInicio, añoFin, 0.0f, precioFin);
+    Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Ingrese la oferta por el vehiculo elegido: ");
+    double monto = sc.nextDouble();
+    int idOffer = Utilitaria.nextId("Oferta.txt");
+    Utilitaria.registrarOferta(idOffer, monto, vehiculoSeleccionado, this.getId(),vehiculoSeleccionado.getPlaca());
+    }
+  public void ofertaPorVehiculo(String tipovehiculo, 
+          double recorridoInicio, float recorridoFin, int añoInicio, double precioInicio, float precioFin){
+    ArrayList<Vehiculo> vehiculos = Vehiculo.readFile();
+    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos,tipovehiculo, 
+            recorridoInicio, recorridoFin, añoInicio, 1000000000, precioInicio, precioFin);
+    Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Ingrese la oferta por el vehiculo elegido: ");
+    double monto = sc.nextDouble();
+    int idOffer = Utilitaria.nextId("Oferta.txt");
+    Utilitaria.registrarOferta(idOffer, monto, vehiculoSeleccionado, this.getId(),vehiculoSeleccionado.getPlaca());
+    }
+  public void ofertaPorVehiculo(String tipovehiculo, 
+          double recorridoInicio, float recorridoFin, long añoFin, double precioInicio, float precioFin){
+    ArrayList<Vehiculo> vehiculos = Vehiculo.readFile();
+    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos,tipovehiculo, 
+            recorridoInicio, recorridoFin, 0, añoFin, precioInicio, precioFin);
+    Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Ingrese la oferta por el vehiculo elegido: ");
+    double monto = sc.nextDouble();
+    int idOffer = Utilitaria.nextId("Oferta.txt");
+    Utilitaria.registrarOferta(idOffer, monto, vehiculoSeleccionado, this.getId(),vehiculoSeleccionado.getPlaca());
+    }
+    public void ofertaPorVehiculo(String tipovehiculo, 
+          double recorridoInicio, int añoInicio, long añoFin, double precioInicio, float precioFin){
+    ArrayList<Vehiculo> vehiculos = Vehiculo.readFile();
+    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos,tipovehiculo, 
+            recorridoInicio, 100000000.0f , añoInicio, añoFin, precioInicio, precioFin);
+    Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Ingrese la oferta por el vehiculo elegido: ");
+    double monto = sc.nextDouble();
+    int idOffer = Utilitaria.nextId("Oferta.txt");
+    Utilitaria.registrarOferta(idOffer, monto, vehiculoSeleccionado, this.getId(),vehiculoSeleccionado.getPlaca());
+    }
+    public void ofertaPorVehiculo(String tipovehiculo, 
+         float recorridoFin, int añoInicio, long añoFin, double precioInicio, float precioFin){
+    ArrayList<Vehiculo> vehiculos = Vehiculo.readFile();
+    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos,tipovehiculo, 
+            0, recorridoFin, añoInicio, añoFin, precioInicio, precioFin);
+    Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Ingrese la oferta por el vehiculo elegido: ");
+    double monto = sc.nextDouble();
+    int idOffer = Utilitaria.nextId("Oferta.txt");
+    Utilitaria.registrarOferta(idOffer, monto, vehiculoSeleccionado, this.getId(),vehiculoSeleccionado.getPlaca());
+    }
+      public void ofertaPorVehiculo(
+          double recorridoInicio, float recorridoFin, int añoInicio, long añoFin, double precioInicio, float precioFin){
+    ArrayList<Vehiculo> vehiculos = Vehiculo.readFile();
+    ArrayList<Vehiculo> vehiculosBuscados = Utilitaria.filtrarVehiculos(vehiculos, 
+            recorridoInicio, recorridoFin, añoInicio, añoFin, precioInicio, precioFin);
+    Vehiculo vehiculoSeleccionado = Utilitaria.navegar(vehiculosBuscados);
     Scanner sc = new Scanner(System.in);
     System.out.println("Ingrese la oferta por el vehiculo elegido: ");
     double monto = sc.nextDouble();
