@@ -51,6 +51,10 @@ public class Vehiculo implements Saveable {
         this.ofertas = new ArrayList<>(); 
         this.vendedor= Vendedor.searchByID( idVendedor);
     }
+    
+    public void añadirOferta(Oferta o){
+        this.ofertas.add(o);
+    }
 
     public int getIdVendedor() {
         return idVendedor;

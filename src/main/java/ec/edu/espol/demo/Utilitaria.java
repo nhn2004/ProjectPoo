@@ -44,7 +44,9 @@ class Utilitaria {
       
     public static void registrarOferta(int idOferta, double p,Vehiculo v, int idComprador, String placa){
       Oferta oferta = new Oferta(idOferta, p, idComprador, placa);
+      v.añadirOferta(oferta);
       ArrayList<Comprador> compradores = Comprador.readFile("Comprador.txt");
+  
       oferta.setComprador(Comprador.searchByID(compradores, idComprador)); 
       oferta.saveFile("Oferta.txt");
     }
@@ -167,10 +169,12 @@ class Utilitaria {
     }
     
     public static Vehiculo filtrarPorPlaca(String placa,ArrayList<Vehiculo> vehiculos){
+        if (vehiculos.size()>0){
         for (Vehiculo v: vehiculos){
             if(placa.equals(v.getPlaca()))
                 return v;
-        }  
+        }
+        }
         return null;
     }
     

@@ -24,8 +24,7 @@ public class Vendedor extends Usuario{
     public Vendedor(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
         this.vehiculos= new ArrayList<>();
-//        try{this.vehiculos= Vendedor.searchByIDS(id);}
-//        catch(Exception e){}
+
     }
     
     
@@ -53,7 +52,7 @@ public class Vendedor extends Usuario{
         }
 
     
-    public static ArrayList<Vehiculo> searchByIDS(int idVendedor){ //IDS= ID SELLER==ID VENDEDOR
+    public static ArrayList<Vehiculo> searchByIDS(int idVendedor){ 
         ArrayList<Vehiculo> veh = Vehiculo.readFile();
         System.out.println(veh.get(0));
         ArrayList<Vehiculo> nuevaL= new ArrayList<>();  

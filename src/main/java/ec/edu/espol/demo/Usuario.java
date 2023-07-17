@@ -92,9 +92,7 @@ public class Usuario implements Saveable {
         } 
         catch(Exception e){
           System.out.println(e.getMessage()+"savefileUsuario");}
-//        catch(IOException e){
-//          System.out.println(e.getMessage());
-//        }
+
     }
   
 }
