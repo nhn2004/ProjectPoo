@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 1|Kenneth Joel|Echeverria Chavarria|ESPOL|kjecheve@espol.edu.ec|DomeyNahin
 2|Domenica|Romero Coello|ESPOL bellakas|ddomero@espol.edu.ec|ValuyDome
 3|Ken|Jo|ddd|kenne@espl.edu.ec|kdljf888
 4|iiei|bfg|dkf|kj9089|djfljd
+=======
+1|Nahin|Cevallos|Espol|nhncevallos@gmail.com|nhn/2004
+2|Jussephe|Vinces|Espol|njcevall@espil.edu.ec|nao/2004
+3|Domenica|Romero|Espol|ddromero@espol.edu.ec|ValuyDome
+>>>>>>> 2c344684d4750b621862aaa96b4367a84a2159e5

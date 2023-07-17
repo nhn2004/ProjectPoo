@@ -4,6 +4,10 @@
 
 package ec.edu.espol.demo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author Dom
@@ -12,6 +16,7 @@ public class Demo {
 
     public static void main(String[] args) {
         
+<<<<<<< HEAD
         //for (int i=0;i<2;i++){
 
         Vendedor.registroNuevo("Vendedor.txt");
@@ -20,5 +25,29 @@ public class Demo {
            // Comprador.registroNuevo("Comprador.txt");
       //  }
         
+=======
+//        for (int i=0;i<2;i++){
+//            Vendedor.registroNuevo("Vendedor.txt");
+//        }
+//        for (int i=0;i<2;i++){
+//            Comprador.registroNuevo("Comprador.txt");
+//        }
+//        Vendedor.registroNuevo("Vendedor.txt");
+//        Vendedor v1 = new Vendedor(1,"Nahin","Cevallos","Espol","nhncevallos@gmail.com","nhn/2004");
+//        for (int i=0;i<3;i++){
+////            Comprador.registroNuevo("Comprador.txt");
+////        }
+//        
+//            v1.registrarNuevoVehiculo();
+//        }
+//          Vendedor.registroNuevo("Vendedor.txt");
+//          Vendedor v1 = new Vendedor(1,"Nahin","Cevallos","Espol","nhncevallos@gmail.com","nhn/2004");
+//          v1.registrarNuevoVehiculo();
+          
+//          ArrayList<Vehiculo> vehiculos = Vehiculo.readFile("Vehiculos.txt");
+//          System.out.println(vehiculos.get(0));
+          Comprador c1 = new Comprador(1,"Kenneth","Echeverria","Espol","kjecheve@espol.edu.ec","kenne");
+          c1.ofertaPorVehiculo("Auto", 0, 0, 0, 0, 0, 0);
+>>>>>>> 2c344684d4750b621862aaa96b4367a84a2159e5
     }
 }

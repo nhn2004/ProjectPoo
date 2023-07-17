@@ -220,7 +220,7 @@ class Utilitaria {
         do{
             v = vehiculos.get(i);  
             System.out.println(v.toString());
-            if (tamaño>0 && i==0){
+            if (tamaño>=0 && i==0){
               System.out.println("1.- Siguiente");
               System.out.println("2.- Seleccionar");
             }

@@ -7,6 +7,7 @@ package ec.edu.espol.demo;
  */
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,7 +23,9 @@ public class Vendedor extends Usuario{
     }
     public Vendedor(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         super(id, nombre, apellidos, organizacion, correoElectronico, clave);
-        this.vehiculos=  Vendedor.searchByIDS(id);
+        try{this.vehiculos= Vendedor.searchByIDS(id);}
+        catch(Exception e){
+        this.vehiculos= new ArrayList<>();}
     }
     
     
@@ -43,14 +46,15 @@ public class Vendedor extends Usuario{
         if (Vendedor.buscarClave(nomArchivo, cE).equals("")){
         Vendedor v= new Vendedor(i,nom,apellido,org,cE,key);
         v.saveFile(nomArchivo);
-         } else{
+         }
+        else{
                 System.out.println("Ese correo ya existe no se puede registar");
         } 
         }
 
     
     public static ArrayList<Vehiculo> searchByIDS(int idVendedor){ //IDS= ID SELLER==ID VENDEDOR
-        ArrayList<Vehiculo> veh = Vehiculo.readFile("Vehiculo.txt");
+        ArrayList<Vehiculo> veh = Vehiculo.readFile();
         ArrayList<Vehiculo> nuevaL= new ArrayList<>();  
         for (Vehiculo v: veh){
             if (v.getIdVendedor() == idVendedor)
@@ -99,11 +103,17 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
       System.out.print("Ingrese la placa: ");
       String placa = sc.nextLine();
       boolean validacion=true;
-
-      for (Vehiculo v:vehiculos){
+      
+      if(vehiculos.size()>0){
+          for (Vehiculo v:vehiculos){
      if (!(placa.equals(v.getPlaca()))){
        validacion=false;}
       }
+      }
+      else
+          validacion = false;
+
+      
 
    if (validacion==false){
       System.out.println("Ingrese el tipo de Vehículo a registrar: ");
