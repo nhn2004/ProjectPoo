@@ -42,15 +42,16 @@ public class Demo {
 //        }
 //          Vendedor.registroNuevo("Vendedor.txt");
 
-          Vendedor v2 = new Vendedor(2,"Jussephe","Vinces","Espol","njcevall@espol.edu.ec","nao/2004");
-         
-          v2.registrarNuevoVehiculo();
+          Vendedor v1 = new Vendedor(1,"Nahin","Cevallos","Espol","nhncevallo@gmail.com","nhn/2004");
+          v1.registrarNuevoVehiculo();
+          v1.registrarNuevoVehiculo();
+          v1.registrarNuevoVehiculo();
 //          
 //          ArrayList<Vehiculo> vehiculos = Vehiculo.readFile();
 //          System.out.println(vehiculos.get(0));
 //          Comprador c1 = new Comprador(1,"Kenneth","Echeverria","Espol","kjecheve@espol.edu.ec","kenne");
 //          c1.ofertaPorVehiculo("Auto", 45000, 49000, 2008, 2011, 10000, 16000);
-//          v1.aceptarOferta();
+//          v2.aceptarOferta();
 
     }
 }

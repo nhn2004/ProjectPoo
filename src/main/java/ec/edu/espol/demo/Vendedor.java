@@ -83,12 +83,15 @@ public static ArrayList<Vendedor> readFile(String nombreArchivo){
     
 public static String buscarClave(String nombreArchivo,String correoElectronico){
         ArrayList<Vendedor> lV= Vendedor.readFile(nombreArchivo);
-        String clave= "";
+        String key = "";
+        
         for (Vendedor v:lV){
+            
             if (v.getCorreoElectronico().equals(correoElectronico))
-                clave=v.getClave();
+                key = v.getClave();
+                
         }
-    return clave;
+    return key;
     }
 
  public void registrarNuevoVehiculo(){

@@ -48,7 +48,7 @@ class Utilitaria {
       oferta.setComprador(Comprador.searchByID(compradores, idComprador)); 
       oferta.saveFile("Oferta.txt");
     }
-      public static String generarHash (String input) {
+      public static String generarHash(String input) {
         try{
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] hash= md.digest(input.getBytes(StandardCharsets.UTF_8));
