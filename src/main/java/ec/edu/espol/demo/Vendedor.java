@@ -175,10 +175,11 @@ public class Vendedor extends Usuario{
                 m.saveFile("Vehiculo.txt");
                 v1.getVehiculos().add(m);
                    }
-
              }
 
              }
+       } else {
+           System.out.println("Usuario o contraseña incorrecta.");
        }
     }
 
@@ -254,6 +255,8 @@ public class Vendedor extends Usuario{
            }
            else
                System.out.println("No tienes ofertas para tu vehiculo con placa "+placa);
+       } else {
+           System.out.println("Usuario o contraseña incorrecta.");
        }
 
    }

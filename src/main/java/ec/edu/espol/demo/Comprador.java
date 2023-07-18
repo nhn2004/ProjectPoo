@@ -119,6 +119,8 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
             oferta.setComprador(c); 
             oferta.saveFile("Oferta.txt");
             }
+        } else {
+            System.out.println("Usuario o clave incorrecta.");
         }
     }
 
@@ -156,6 +158,8 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
             Oferta oferta = new Oferta(idOffer, monto, c.getId(), vehiculoSeleccionado.getPlaca());
             oferta.setComprador(c); 
             oferta.saveFile("Oferta.txt");
+        } else {
+            System.out.println("Usuario o clave incorrecta.");
         }
     }
     
@@ -224,6 +228,8 @@ public static String buscarClave(String nombreArchivo,String correoElectronico){
             }
             else
                 System.out.println("No tienes ninguna oferta. Aún!!!"); 
+        } else {
+            System.out.println("Usuario o clave incorrecta.");
         }
     }
 }
