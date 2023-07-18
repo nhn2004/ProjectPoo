@@ -6,10 +6,8 @@ package ec.edu.espol.demo;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
+
 
 /**
  *
@@ -23,9 +21,6 @@ public class Usuario implements Saveable {
     private String correoElectronico;
     private String clave;
     
-    public Usuario(){
-        
-    }
     public Usuario(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         this.id = id;
         this.nombre = nombre;
@@ -91,7 +86,7 @@ public class Usuario implements Saveable {
             pw.println(toString());  
         } 
         catch(Exception e){
-          System.out.println(e.getMessage()+"savefileUsuario");}
+          }
 
     }
   

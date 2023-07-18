@@ -1,2 +1,0 @@
-GRX-3932|Hola|Bb|Como|2010|45620.0|Blanco|Super|15000.0|1|Normales|Normal
-GRX-3932|hhh|fff|fff|2010|45620.0|fff|fff|15000.0|1|fff|fff

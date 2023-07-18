@@ -1,3 +1,1 @@
-1|Nahin|Cevallos|Espol|nhncevallos@gmail.com|nhn/2004
-2|Jussephe|Vinces|Espol|njcevall@espil.edu.ec|nao/2004
-3|Domenica|Romero|Espol|ddromero@espol.edu.ec|ValuyDome
+1|Nahin|Jussephe|Espol|nhncevallos@gmail.com|nhn/2004

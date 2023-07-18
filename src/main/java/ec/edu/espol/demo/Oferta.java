@@ -102,21 +102,10 @@ public class Oferta {
     
     public void saveFile(String nombreArchivo){
         try(PrintWriter pw= new PrintWriter(new FileOutputStream(new File(nombreArchivo),true))){
-            pw.println(this.id+"|"+this.precio+"|"+this.idComprador);  
+            pw.println(this.id+"|"+this.precio+"|"+this.idComprador+"|"+this.placa);  
         } 
         catch(Exception e){
           System.out.println(e.getMessage());
-        }
-    }
-    
-    public static void link(ArrayList<Comprador> compradores, ArrayList<Oferta> ofertas, ArrayList<Vehiculo> vehiculos){
-        for(Oferta o: ofertas){
-            Comprador c = Comprador.searchByID(compradores, o.getIdComprador());
-            Vehiculo v = Utilitaria.filtrarPorPlaca(o.getPlaca(),Vehiculo.readFile());
-            c.setOferta(o);
-            v.getOfertas().add(o);
-            o.setComprador(c);
-            o.setVehiculo(v);
         }
     }
 }
