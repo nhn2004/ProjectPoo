@@ -22,39 +22,13 @@ public class Menu {
             case 1 -> {
                 Menu.menuVendedor();
                 
-                System.out.println("Regresar");
-                System.out.println("1. Si");
-                System.out.println("2. No");
-                int sel = sc.nextInt();
-                switch (sel){
-                        case 1 -> {
-                            Menu.menuPrincipal();
-                        }
-                        case 2 -> {
-                            Menu.Vendedor();
-                        }
-                        default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
-
-                }
+                
                 
                 
             }
             case 2 -> {
                 Menu.menuComprador();
-                System.out.println("Regresar");
-                System.out.println("1. Si");
-                System.out.println("2. No");
-                int sel = sc.nextInt();
-                switch (sel){
-                        case 1 -> {
-                            Menu.menuPrincipal();
-                        }
-                        case 2 -> {
-                            Menu.Comprador();
-                        }
-                        default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
-
-                }
+                
             }
 
             default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
@@ -103,6 +77,20 @@ public class Menu {
 
             default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
          }
+        System.out.println("Regresar");
+                System.out.println("1. Si");
+                System.out.println("2. No");
+                int sel = sc.nextInt();
+                switch (sel){
+                        case 1 -> {
+                            Menu.menuPrincipal();
+                        }
+                        case 2 -> {
+                            Menu.Comprador();
+                        }
+                        default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
+
+                }
     }
     
     public static void menuVendedor(){
@@ -125,5 +113,19 @@ public class Menu {
 
             default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
          }
+        System.out.println("Regresar");
+                System.out.println("1. Si");
+                System.out.println("2. No");
+                int sel = sc.nextInt();
+                switch (sel){
+                        case 1 -> {
+                            Menu.menuPrincipal();
+                        }
+                        case 2 -> {
+                            Menu.Vendedor();
+                        }
+                        default -> System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
+
+                }
     }
 }
